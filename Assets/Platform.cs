@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,9 @@ public class Platform : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        rb.AddForce(new Vector2 (-2, 0));
     }
 }
