@@ -30,8 +30,10 @@ public class Platform : MonoBehaviour
 
 
     }
-    
+    void kod()
+    {
 
+    }
     public void ToggleDirection()
     {
         if (direction == 0)
