@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb;
     public int StartForce;
+    public float yyy;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +15,15 @@ public class Ball : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (collision.gameObject.tag == "platform")
+        {
+            rb.velocity = new Vector2(0, 0);
+            rb.AddForce(new Vector2(0, -StartForce));    
+        }
     }
-    
-        
+
+
 
 }
