@@ -22,8 +22,9 @@ public class Ball : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             rb.AddForce(new Vector2(0, -StartForce));    
         }
+        if (collision.gameObject.tag == "floor")
+        {
+            transform.position = new Vector2(0, 0);
+        }
     }
-
-
-
 }
