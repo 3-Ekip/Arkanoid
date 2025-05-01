@@ -1064,8 +1064,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 674675292}
-  StartForce: -50
+  StartForce: -30
   yyy: 0
+  ball: {fileID: 674675290}
 --- !u!1 &688100843
 GameObject:
   m_ObjectHideFlags: 0

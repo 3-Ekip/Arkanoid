@@ -22,13 +22,6 @@ public class Platform : MonoBehaviour
             float clampedX = Mathf.Clamp(transform.position.x, negativemaxX, maxX);
             transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
         }
-
-        Debug.Log(direction);
-
-
-
-
-
     }
     void kod()
     {
