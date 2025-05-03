@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -8,10 +9,11 @@ public class Ball : MonoBehaviour
     public int StartForce;
     public float yyy;
     public GameObject ball;
+    public Brick brickScript;
     // Start is called before the first frame update
     void Start()
     {
-       StartCoroutine("StartingForceCR");
+        StartCoroutine("StartingForceCR");
     }
     IEnumerator StartingForceCR()
     {
@@ -31,23 +33,16 @@ public class Ball : MonoBehaviour
         {
             StartCoroutine("Respawn");            
         }
-        if (collision.gameObject.tag == "brick")
-        {
-            transform.position = new Vector2(0, 0);
-        }
+        
     }
     IEnumerator Respawn()
     {
-        ball.SetActive(false);
-        Debug.Log("ballsetfalse");  
-        yield return new WaitForSeconds(0.5f);
-        Debug.Log("firstwaitend");
-        ball.SetActive(true);
-        Debug.Log("ballsettrue");
-        transform.position = new Vector2(0, 0);
-        yield return new WaitForSeconds(1f);
         rb.velocity = new Vector2(0, 0);
-        rb.AddForce(new Vector2(0, -StartForce));
-        Debug.Log("endofcr");
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(1f);        
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        transform.position = new Vector2(0, 2);
+        yield return new WaitForSeconds(1f);     
+        rb.AddForce(new Vector2(0, StartForce)); 
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     Rigidbody2D rb;
-     public float speed = 5f;
+    public float speed = 5f;
     private int direction = 0;
     public float maxX = 1.355f;
     public float  negativemaxX = -1.355f;

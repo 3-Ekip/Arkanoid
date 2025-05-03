@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    private int brickHealth;
+    public int brickHealth;
     // Start is called before the first frame update
     void Start()
     {
-        brickHealth = 3;
     }
 
     void Update()
     {
-        
+        if (brickHealth == 0) 
+        { 
+            Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       if (collision.gameObject.tag == "ball")
+       {
+            brickHealth--;
+       }
     }
 }

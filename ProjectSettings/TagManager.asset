@@ -6,6 +6,7 @@ TagManager:
   tags:
   - platform
   - floor
+  - ball
   layers:
   - Default
   - TransparentFX
