@@ -23,10 +23,6 @@ public class Platform : MonoBehaviour
             transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
         }
     }
-    void kod()
-    {
-
-    }
     public void ToggleDirection()
     {
         if (direction == 0)
