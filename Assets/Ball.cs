@@ -9,16 +9,19 @@ public class Ball : MonoBehaviour
     public int StartForce;
     public float yyy;
     public GameObject ball;
-    public Brick brickScript;
+    LogicScript logic;
+    public Transform pl;
+    public GameObject logicManagerr;
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = new Vector2(0, 2);
         StartCoroutine("StartingForceCR");
     }
     IEnumerator StartingForceCR()
     {
-        yield return new WaitForSeconds(2f);
-        rb.AddForce(new Vector2(0, StartForce));
+        yield return new WaitForSeconds(1.5f);
+        rb.AddForce(new Vector2(0, -StartForce),ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
@@ -27,11 +30,14 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.tag == "platform")
         {
             rb.velocity = new Vector2(0, 0);
-            rb.AddForce(new Vector2(0, -StartForce));    
+            Vector2 normal = transform.position - new Vector3(pl.position.x, pl.position.y - 2, 0);
+            
+            rb.AddForce(normal.normalized * StartForce, ForceMode2D.Impulse);
         }
         if (collision.gameObject.tag == "floor")
         {
-            StartCoroutine("Respawn");            
+            StartCoroutine("Respawn");
+            //logic.HealthPoints--;
         }
         
     }

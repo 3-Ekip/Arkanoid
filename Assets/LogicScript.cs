@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class LogicScript : MonoBehaviour
 {
     public int bricksLeft;
     public bool BrickKey;
+    public int HealthPoints;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,10 @@ public class LogicScript : MonoBehaviour
         if (bricksLeft == 1)
         {
             BrickKey = true;
+        }
+        if (HealthPoints == 0) 
+        {
+           // SceneManager.LoadScene("FirsScene");
         }
     }
 }
