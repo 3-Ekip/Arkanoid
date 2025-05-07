@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bricksLeft: 0
   BrickKey: 0
-  HealthPoints: 3
+  HealthPoints: 1
 --- !u!4 &528226698
 Transform:
   m_ObjectHideFlags: 0
@@ -1476,8 +1476,8 @@ MonoBehaviour:
   StartForce: 5
   yyy: 0
   ball: {fileID: 674675290}
+  logic: {fileID: 528226697}
   pl: {fileID: 1494884408}
-  logicManagerr: {fileID: 528226696}
 --- !u!4 &677942939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7179054804091722737, guid: 00b910cf8aa9f564c85bb9084b9bb585, type: 3}
@@ -2309,7 +2309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1482536378
 Transform:
   m_ObjectHideFlags: 0

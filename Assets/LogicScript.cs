@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class LogicScript : MonoBehaviour
     public int bricksLeft;
     public bool BrickKey;
     public int HealthPoints;
+    public Array Scenes;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +19,14 @@ public class LogicScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       
         if (bricksLeft == 1)
         {
             BrickKey = true;
-        }
-        if (HealthPoints == 0) 
-        {
-           // SceneManager.LoadScene("FirsScene");
-        }
+        }        
+    }
+    public void NextLevel()
+    {
+        //SceneManager.LoadScene(1);
     }
 }

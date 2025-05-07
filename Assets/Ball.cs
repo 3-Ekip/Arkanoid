@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -9,9 +10,8 @@ public class Ball : MonoBehaviour
     public int StartForce;
     public float yyy;
     public GameObject ball;
-    LogicScript logic;
+    public LogicScript logic;
     public Transform pl;
-    public GameObject logicManagerr;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +36,12 @@ public class Ball : MonoBehaviour
         }
         if (collision.gameObject.tag == "floor")
         {
-            StartCoroutine("Respawn");
-            //logic.HealthPoints--;
+            logic.HealthPoints--;
+            if (logic.HealthPoints == 0)
+            {
+                SceneManager.LoadScene("Second");
+            }
+            StartCoroutine("Respawn");            
         }
         
     }
@@ -49,6 +53,6 @@ public class Ball : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         transform.position = new Vector2(0, 2);
         yield return new WaitForSeconds(1f);     
-        rb.AddForce(new Vector2(0, StartForce)); 
+        rb.AddForce(new Vector2(0, -StartForce), ForceMode2D.Impulse); 
     }
 }
