@@ -41,9 +41,11 @@ public class Ball : MonoBehaviour
             {
                 SceneManager.LoadScene("Second");
             }
-            StartCoroutine("Respawn");            
-        }
-        
+            else
+            {
+                StartCoroutine("Respawn");
+            }
+        }       
     }
     IEnumerator Respawn()
     {
