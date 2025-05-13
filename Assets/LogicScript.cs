@@ -11,10 +11,11 @@ public class LogicScript : MonoBehaviour
     public bool BrickKey;
     public int HealthPoints;
     public Array Scenes;
+    public int currentLevelNo;
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentLevelNo = 0;
     }
 
     // Update is called once per frame
@@ -27,6 +28,11 @@ public class LogicScript : MonoBehaviour
     }
     public void NextLevel()
     {
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene(currentLevelNo);
+        currentLevelNo++;
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
     }
 }

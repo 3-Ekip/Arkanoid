@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.tag == "platform")
         {
             rb.velocity = new Vector2(0, 0);
-            Vector2 normal = transform.position - new Vector3(pl.position.x, pl.position.y - 2, 0);
+            Vector2 normal = transform.position - new Vector3(pl.position.x, pl.position.y - (float)1.25, 0);
             
             rb.AddForce(normal.normalized * StartForce, ForceMode2D.Impulse);
         }
@@ -39,7 +39,7 @@ public class Ball : MonoBehaviour
             logic.HealthPoints--;
             if (logic.HealthPoints == 0)
             {
-                SceneManager.LoadScene("Second");
+                SceneManager.LoadScene("GameOver");
             }
             else
             {
