@@ -7,33 +7,23 @@ public class Platform : MonoBehaviour
     Rigidbody2D rb;
     public float speed = 5f;
     private int direction = 0;
-    public float maxX = 1.355f;
-    public float  negativemaxX = -1.355f;
-
-    // Update is called once per frame
+    public float maxX;
+    public float  negativemaxX;
+    void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Update()
     {
-
-        if (direction != 0)
+        if (Input.GetMouseButton(0))
         {
-            transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
-
-            
-            float clampedX = Mathf.Clamp(transform.position.x, negativemaxX, maxX);
-            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+            platformDrag();
         }
     }
-    public void ToggleDirection()
+    private void platformDrag()
     {
-        if (direction == 0)
-        {
-            direction = 1;  
-        }
-        else
-        {
-            direction *= -1;  
-        }
+        float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        float clampedX = Mathf.Clamp(mousePos, negativemaxX, maxX);
+        transform.position = new Vector2(clampedX, transform.position.y);
     }
-
-
 }

@@ -10,8 +10,10 @@ public class Brick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        logicManagerr = GameObject.Find("LogicManager");
         logic = logicManagerr.GetComponent<LogicScript>();
         logic.bricksLeft++;
+
     }
 
     void Update()

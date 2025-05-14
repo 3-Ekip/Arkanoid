@@ -15,13 +15,22 @@ public class Ball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector2(0, 2);
-        StartCoroutine("StartingForceCR");
+        DontDestroyOnLoad(this.gameObject);
+        SceneStart();
+        Debug.Log("stupidstartcode");
     }
-    IEnumerator StartingForceCR()
+    public void SceneStart()
+    {
+        rb.velocity = new Vector2(0, 0);
+        transform.position = new Vector2(0, 2);
+        StartCoroutine(StartingPosition());
+        Debug.Log("Scenestart");
+    }
+    IEnumerator StartingPosition()
     {
         yield return new WaitForSeconds(1.5f);
         rb.AddForce(new Vector2(0, -StartForce),ForceMode2D.Impulse);
+        Debug.Log("startposit");
     }
 
     // Update is called once per frame
@@ -39,11 +48,13 @@ public class Ball : MonoBehaviour
             logic.HealthPoints--;
             if (logic.HealthPoints == 0)
             {
-                SceneManager.LoadScene("GameOver");
+                SceneManager.LoadScene(0);
+                Debug.Log("a");
             }
             else
             {
-                StartCoroutine("Respawn");
+                StartCoroutine(Respawn());
+                Debug.Log("b");
             }
         }       
     }
@@ -55,6 +66,7 @@ public class Ball : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         transform.position = new Vector2(0, 2);
         yield return new WaitForSeconds(1f);     
-        rb.AddForce(new Vector2(0, -StartForce), ForceMode2D.Impulse); 
+        rb.AddForce(new Vector2(0, -StartForce), ForceMode2D.Impulse);
+        Debug.Log("st");
     }
 }

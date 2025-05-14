@@ -10,12 +10,16 @@ public class LogicScript : MonoBehaviour
     public int bricksLeft;
     public bool BrickKey;
     public int HealthPoints;
-    public Array Scenes;
     public int currentLevelNo;
+    GameObject Ball;
+    Ball ball;
     // Start is called before the first frame update
     void Start()
     {
-        currentLevelNo = 0;
+        Ball = GameObject.Find("Ball");
+        ball = Ball.GetComponent<Ball>();
+        DontDestroyOnLoad(this.gameObject);
+        currentLevelNo++;
     }
 
     // Update is called once per frame
@@ -24,11 +28,17 @@ public class LogicScript : MonoBehaviour
         if (bricksLeft == 1)
         {
             BrickKey = true;
-        }        
+        }
+        if (bricksLeft == 0) 
+        {
+            if (currentLevelNo <= 4) 
+            NextLevel();
+        } 
     }
     public void NextLevel()
     {
         SceneManager.LoadScene(currentLevelNo);
+        ball.SceneStart();
         currentLevelNo++;
     }
     public void Restart()
