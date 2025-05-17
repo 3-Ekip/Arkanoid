@@ -47,17 +47,18 @@ public class Ball : MonoBehaviour
         {
             logic.HealthPoints--;
             if (logic.HealthPoints == 0)
-            {
-                SceneManager.LoadScene(logic.GameOverSceneNum);
-                logic.currentLevelNo = logic.GameOverSceneNum;
-                Debug.Log("a");
+            {               
             }
             else
             {
                 StartCoroutine(Respawn());
                 Debug.Log("b");
             }
-        }       
+        }
+        if (collision.gameObject.tag == "damage")
+        {
+
+        }
     }
     IEnumerator Respawn()
     {

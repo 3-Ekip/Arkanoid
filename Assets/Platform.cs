@@ -9,6 +9,7 @@ public class Platform : MonoBehaviour
     private int direction = 0;
     public float maxX;
     public float  negativemaxX;
+    public LogicScript logic;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -25,5 +26,12 @@ public class Platform : MonoBehaviour
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float clampedX = Mathf.Clamp(mousePos, negativemaxX, maxX);
         transform.position = new Vector2(clampedX, transform.position.y);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "damage")
+        {
+            logic.HealthPoints--;
+        }
     }
 }
