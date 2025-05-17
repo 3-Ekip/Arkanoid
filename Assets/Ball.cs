@@ -56,10 +56,6 @@ public class Ball : MonoBehaviour
                 Debug.Log("b");
             }
         }
-        if (collision.gameObject.tag == "damage")
-        {
-
-        }
     }
     IEnumerator Respawn()
     {

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.14196509, g: 0.5924529, b: 0.14196509, a: 1}
+  m_Color: {r: 0.17172654, g: 0.39215687, b: 0.17172654, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -145,5 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickHealth: 999
   logicManagerr: {fileID: 0}
-  BrickType: 0
+  brickType: 1
   damageCapsule: {fileID: 0}

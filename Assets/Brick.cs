@@ -9,7 +9,7 @@ public class Brick : MonoBehaviour
     public int brickHealth;
     public GameObject logicManagerr;
     LogicScript logic;
-    public int BrickType;
+    public int brickType;
     public GameObject damageCapsule;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class Brick : MonoBehaviour
         logicManagerr = GameObject.Find("LogicManager");
         logic = logicManagerr.GetComponent<LogicScript>();
         logic.bricksLeft++;
-        if (brickHealth == 999)
+        if (brickType == 1)
         {
             logic.BrickKey++;
         }
@@ -27,6 +27,10 @@ public class Brick : MonoBehaviour
     {            
         if (brickHealth == 0) 
         {
+            if (brickType==1)
+            {
+                logic.BrickKey--;
+            }
             logic.bricksLeft--;
             Destroy(gameObject);
         }
@@ -40,11 +44,10 @@ public class Brick : MonoBehaviour
     {
        if (collision.gameObject.tag == "ball")
        {
-            if(BrickType == 1)
+            if(brickType == 2)
             {
                 Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
-                Instantiate(damageCapsule, transform.position, Rot);
-                
+                Instantiate(damageCapsule, transform.position, Rot);               
             }
             brickHealth--;
        }  

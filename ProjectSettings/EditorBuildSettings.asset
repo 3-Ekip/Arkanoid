@@ -13,13 +13,19 @@ EditorBuildSettings:
     guid: 4720f8beecfd153409d8a89c14dcc5ea
   - enabled: 1
     path: Assets/Scenes/First.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 74a63b507d31f784286bf4350673c1bd
   - enabled: 1
     path: Assets/Scenes/Second.unity
-    guid: fca03333007b2e248a4a0125432af6c4
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Third.unity
-    guid: 3384a4fe6ea24e048aaa3d32ba328adf
+    guid: 825f1a87bb9a9f04d895d1b5cae41dad
+  - enabled: 1
+    path: Assets/Scenes/Fourth.unity
+    guid: 34e3d60aba1de5647ad04d5679ade186
+  - enabled: 1
+    path: Assets/Scenes/Fifth.unity
+    guid: c0f2fd1dc21a4774ba9cc6d3dc9d4fcb
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: c96e12b4c85d1bc499674bf613d61a27

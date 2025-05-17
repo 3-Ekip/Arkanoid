@@ -43,14 +43,17 @@ public class LogicScript : MonoBehaviour
         }
         if (bricksLeft == 0)
         {
-            if (currentLevelNo <= 4)
+            if (currentLevelNo <= 7)
             {  
+                ball.SceneStart();
                 NextLevel();
-            ball.SceneStart();
             }
-        else DestroyObjects(); 
-        } 
-        
+            else
+            {
+                DestroyObjects();
+                Destroy(gameObject);
+            }            
+        }        
     }
     public void NextLevel()
     {

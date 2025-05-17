@@ -145,5 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickHealth: 1
   logicManagerr: {fileID: 0}
-  BrickType: 1
+  brickType: 2
   damageCapsule: {fileID: 7649741347855846844, guid: 0b9089c0b05641842b59f355b6213e9b, type: 3}
