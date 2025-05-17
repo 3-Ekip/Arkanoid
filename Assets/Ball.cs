@@ -23,7 +23,7 @@ public class Ball : MonoBehaviour
     public void SceneStart()
     {
         rb.velocity = new Vector2(0, 0);
-        transform.position = new Vector2(0, 2);
+        transform.position = new Vector2(0, 0);
         StartCoroutine(StartingPosition());
         Debug.Log("Scenestart");
     }
@@ -61,9 +61,9 @@ public class Ball : MonoBehaviour
     {
         rb.velocity = new Vector2(0, 0);
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        transform.position = new Vector2(0, 0);
         yield return new WaitForSeconds(1f);        
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        transform.position = new Vector2(0, 2);
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;        
         yield return new WaitForSeconds(1f);
         StartCoroutine(StartFandR());
         Debug.Log("st");

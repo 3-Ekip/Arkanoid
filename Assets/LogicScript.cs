@@ -58,7 +58,7 @@ public class LogicScript : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(currentLevelNo);
-        
+        ball.StartForce++;
         currentLevelNo++;
     }
     public void DestroyObjects()
