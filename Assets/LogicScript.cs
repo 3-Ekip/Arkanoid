@@ -35,9 +35,11 @@ public class LogicScript : MonoBehaviour
         }
         if (HealthPoints == 0)
         {
+            DestroyObjects();
             SceneManager.LoadScene(GameOverSceneNum);
-            currentLevelNo = GameOverSceneNum;
+            currentLevelNo = GameOverSceneNum;           
             Debug.Log("a");
+            Destroy(gameObject);
         }
         if (bricksLeft == 0)
         {
@@ -55,11 +57,6 @@ public class LogicScript : MonoBehaviour
         SceneManager.LoadScene(currentLevelNo);
         
         currentLevelNo++;
-    }
-    public void Restart()
-    {
-        SceneManager.LoadScene(2);
-        Destroy(gameObject);
     }
     public void DestroyObjects()
     {

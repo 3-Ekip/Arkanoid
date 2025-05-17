@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     public GameObject ball;
     public LogicScript logic;
     public Transform pl;
+    public Quaternion Rot;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class Ball : MonoBehaviour
     IEnumerator StartingPosition()
     {
         yield return new WaitForSeconds(1.5f);
-        rb.AddForce(new Vector2(0, -StartForce),ForceMode2D.Impulse);
+        StartCoroutine(StartFandR());
         Debug.Log("startposit");
     }
 
@@ -67,8 +68,16 @@ public class Ball : MonoBehaviour
         yield return new WaitForSeconds(1f);        
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         transform.position = new Vector2(0, 2);
-        yield return new WaitForSeconds(1f);     
-        rb.AddForce(new Vector2(0, -StartForce), ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(StartFandR());
         Debug.Log("st");
+    }
+    
+    IEnumerator StartFandR()
+    {
+        Rot = Quaternion.Euler(0, 0, Random.Range(-20, 20));        
+        transform.rotation = Rot;
+        yield return new WaitForSeconds(0.1f);
+        rb.AddRelativeForce(new Vector2(0, -StartForce), ForceMode2D.Impulse);
     }
 }
