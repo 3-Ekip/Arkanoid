@@ -367,9 +367,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bricksLeft: 0
+  GameOverSceneNum: 1
   BrickKey: 0
   HealthPoints: 2
-  currentLevelNo: 1
+  currentLevelNo: 2
 --- !u!4 &528226698
 Transform:
   m_ObjectHideFlags: 0

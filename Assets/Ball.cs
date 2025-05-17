@@ -48,7 +48,8 @@ public class Ball : MonoBehaviour
             logic.HealthPoints--;
             if (logic.HealthPoints == 0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(logic.GameOverSceneNum);
+                logic.currentLevelNo = logic.GameOverSceneNum;
                 Debug.Log("a");
             }
             else
