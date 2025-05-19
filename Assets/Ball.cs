@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public int StartForce;
-    public float yyy;
+    public float StartForce;
     public GameObject ball;
     public LogicScript logic;
     public Transform pl;
@@ -18,20 +17,17 @@ public class Ball : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         SceneStart();
-        Debug.Log("stupidstartcode");
     }
     public void SceneStart()
     {
         rb.velocity = new Vector2(0, 0);
         transform.position = new Vector2(0, 0);
         StartCoroutine(StartingPosition());
-        Debug.Log("Scenestart");
     }
     IEnumerator StartingPosition()
     {
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(StartFandR());
-        Debug.Log("startposit");
     }
 
     // Update is called once per frame
@@ -66,7 +62,6 @@ public class Ball : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;        
         yield return new WaitForSeconds(1f);
         StartCoroutine(StartFandR());
-        Debug.Log("st");
     }
     
     IEnumerator StartFandR()

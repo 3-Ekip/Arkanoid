@@ -13,6 +13,7 @@ public class LogicScript : MonoBehaviour
     public int BrickKey;
     public int HealthPoints;
     public int currentLevelNo;
+    public int LastScene;
     GameObject Ball;
     GameObject Platform;
     Ball ball;
@@ -38,12 +39,11 @@ public class LogicScript : MonoBehaviour
             DestroyObjects();
             SceneManager.LoadScene(GameOverSceneNum);
             currentLevelNo = GameOverSceneNum;           
-            Debug.Log("a");
             Destroy(gameObject);
         }
         if (bricksLeft == 0)
         {
-            if (currentLevelNo <= 7)
+            if (currentLevelNo <= LastScene)
             {  
                 ball.SceneStart();
                 NextLevel();
@@ -58,7 +58,7 @@ public class LogicScript : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(currentLevelNo);
-        ball.StartForce++;
+        ball.StartForce += (float)0.8;
         currentLevelNo++;
     }
     public void DestroyObjects()

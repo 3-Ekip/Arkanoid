@@ -33,5 +33,9 @@ public class Platform : MonoBehaviour
         {
             logic.HealthPoints--;
         }
+        if (collision.gameObject.tag == "heart")
+        {
+            logic.HealthPoints++;
+        }
     }
 }

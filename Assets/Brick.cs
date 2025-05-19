@@ -10,7 +10,9 @@ public class Brick : MonoBehaviour
     public GameObject logicManagerr;
     LogicScript logic;
     public int brickType;
-    public GameObject damageCapsule;
+    public GameObject Capsule;
+    public GameObject TurretPart;
+    public GameObject barricade;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class Brick : MonoBehaviour
         {
             logic.BrickKey++;
         }
+        StartCoroutine(TurretShoot());
     }
 
     void Update()
@@ -36,9 +39,21 @@ public class Brick : MonoBehaviour
         }
         if (logic.bricksLeft == logic.BrickKey)
           {
+            Destroy(barricade);
             brickHealth = 1;
           }
         
+    }
+    IEnumerator TurretShoot()
+    {
+        while (brickType == 3)
+        {
+            yield return new WaitForSeconds(5f);
+            Quaternion Turret = Quaternion.Euler(0, 0, Random.Range(-8, 8));
+            TurretPart.transform.rotation = Turret;
+            yield return new WaitForSeconds(0.2f);
+            Instantiate(Capsule, transform.position, Turret);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -47,7 +62,13 @@ public class Brick : MonoBehaviour
             if(brickType == 2)
             {
                 Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
-                Instantiate(damageCapsule, transform.position, Rot);               
+                Instantiate(Capsule, transform.position, Rot);               
+            }
+            if (brickType == 4)
+            {
+                Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
+                Instantiate(Capsule, transform.position, Rot);
+                Debug.Log("instantiated");
             }
             brickHealth--;
        }  

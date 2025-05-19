@@ -8,6 +8,7 @@ TagManager:
   - floor
   - ball
   - damage
+  - heart
   layers:
   - Default
   - TransparentFX
