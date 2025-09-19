@@ -21,7 +21,7 @@ public class Platform : MonoBehaviour
             platformDrag();
         }
     }
-    private void platformDrag()
+    public void platformDrag()
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float clampedX = Mathf.Clamp(mousePos, negativemaxX, maxX);

@@ -10,24 +10,53 @@ public class Ball : MonoBehaviour
     public float StartForce;
     public GameObject ball;
     public LogicScript logic;
+    public Platform Pscript;
     public Transform pl;
     public Quaternion Rot;
+    public bool StartingTimePeriod;
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        StartingTimePeriod = true;
         SceneStart();
+    }
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            if (StartingTimePeriod == true)
+            {
+                BallStartDrag();
+            }
+            
+        }
+
+    }
+    public void BallStartDrag()
+    {
+        float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        float clampedX = Mathf.Clamp(mousePos, Pscript.negativemaxX, Pscript.maxX);
+        transform.position = new Vector2(clampedX, (float)-4.76);
     }
     public void SceneStart()
     {
         rb.velocity = new Vector2(0, 0);
-        transform.position = new Vector2(0, 0);
+        transform.position = new Vector2(pl.transform.position.x, pl.transform.position.y+(float)0.24);
         StartCoroutine(StartingPosition());
     }
     IEnumerator StartingPosition()
     {
         yield return new WaitForSeconds(1.5f);
-        StartCoroutine(StartFandR());
+        Rotatshup();
+    }
+    void Rotatshup()
+    {
+        StartingTimePeriod = false;
+        Rot = Quaternion.Euler(0, 0, Random.Range(-20, 20));
+        transform.rotation = Rot;
+
+        rb.AddRelativeForce(new Vector2(0, StartForce), ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
@@ -55,20 +84,16 @@ public class Ball : MonoBehaviour
     }
     IEnumerator Respawn()
     {
+        StartingTimePeriod = true;
         rb.velocity = new Vector2(0, 0);
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        transform.position = new Vector2(0, 0);
+        transform.position = new Vector2(pl.transform.position.x, pl.transform.position.y+(float)0.24);
         yield return new WaitForSeconds(1f);        
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;        
         yield return new WaitForSeconds(1f);
-        StartCoroutine(StartFandR());
+        Rotatshup();
     }
     
-    IEnumerator StartFandR()
-    {
-        Rot = Quaternion.Euler(0, 0, Random.Range(-20, 20));        
-        transform.rotation = Rot;
-        yield return new WaitForSeconds(0.1f);
-        rb.AddRelativeForce(new Vector2(0, -StartForce), ForceMode2D.Impulse);
-    }
+   
+    
 }

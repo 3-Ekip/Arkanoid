@@ -46,6 +46,7 @@ public class LogicScript : MonoBehaviour
             if (currentLevelNo <= LastScene)
             {  
                 ball.SceneStart();
+                ball.StartingTimePeriod = true;
                 NextLevel();
             }
             else
