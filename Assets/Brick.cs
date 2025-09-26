@@ -28,22 +28,11 @@ public class Brick : MonoBehaviour
 
     void Update()
     {            
-        if (brickHealth == 0) 
-        {
-            if (brickType==1)
-            {
-                logic.BrickKey--;
-            }
-            logic.bricksLeft--;
-            Destroy(gameObject);
-        }
-        if (logic.bricksLeft == logic.BrickKey)
-          {
-            Destroy(barricade);
-            brickHealth = 1;
-          }
+        
         
     }
+    
+
     IEnumerator TurretShoot()
     {
         while (brickType == 3)
@@ -58,21 +47,45 @@ public class Brick : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
        if (collision.gameObject.tag == "ball")
-       {
-            if(brickType == 2)
-            {
-                Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
-                Instantiate(Capsule, transform.position, Rot);               
-            }
-            if (brickType == 4)
-            {
-                Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
-                Instantiate(Capsule, transform.position, Rot);
-                Debug.Log("instantiated");
-            }
-            brickHealth--;
+        {
+            BrickHit();
+            BrickDrop();
+
        }  
        
+    }
+    void BrickHit()
+    {
+        if (brickHealth == 0)
+        {
+            if (brickType == 1)
+            {
+                logic.BrickKey--;
+            }
+            logic.bricksLeft--;
+            Destroy(gameObject);
+        }
+        if (logic.bricksLeft == logic.BrickKey)
+        {
+            Destroy(barricade);
+            brickHealth = 1;
+        }
+    }
+    void BrickDrop()
+    {
+
+        if (brickType == 2)
+        {
+            Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
+            Instantiate(Capsule, transform.position, Rot);
+        }
+        if (brickType == 4)
+        {
+            Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
+            Instantiate(Capsule, transform.position, Rot);
+            Debug.Log("instantiated");
+        }
+        brickHealth--;
     }
     
 }
