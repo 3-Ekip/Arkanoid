@@ -233,8 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickHealth: 1
   logicManagerr: {fileID: 0}
-  brickType: 0
-  Capsule: {fileID: 0}
+  brickType: 2
+  Capsule: {fileID: 7649741347855846844, guid: 0b9089c0b05641842b59f355b6213e9b, type: 3}
   TurretPart: {fileID: 0}
   barricade: {fileID: 0}
 --- !u!1 &1943646382190659828

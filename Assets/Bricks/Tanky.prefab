@@ -601,12 +601,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brickHealth: 4705
+  brickHealth: 405
   logicManagerr: {fileID: 0}
   brickType: 1
   Capsule: {fileID: 0}
   TurretPart: {fileID: 0}
-  barricade: {fileID: 0}
+  barricade: {fileID: 635302125469290345}
 --- !u!1 &6990625100389159636
 GameObject:
   m_ObjectHideFlags: 0

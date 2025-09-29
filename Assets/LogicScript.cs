@@ -14,15 +14,13 @@ public class LogicScript : MonoBehaviour
     public int HealthPoints;
     public int currentLevelNo;
     public int LastScene;
-    GameObject Ball;
+    public event Action RemoveBarricades;
     GameObject Platform;
-    Ball ball;
+    public Ball ball;
     // Start is called before the first frame update
     void Start()
     {
         Platform = GameObject.Find("Platform");
-        Ball = GameObject.Find("Ball");
-        ball = Ball.GetComponent<Ball>();
         DontDestroyOnLoad(this.gameObject);
         currentLevelNo++;
     }
@@ -34,19 +32,13 @@ public class LogicScript : MonoBehaviour
         { 
              DestroyObjects();
         }
-        if (HealthPoints == 0)
-        {
-            DestroyObjects();
-            SceneManager.LoadScene(GameOverSceneNum);
-            currentLevelNo = GameOverSceneNum;           
-            Destroy(gameObject);
-        }
+        
         if (bricksLeft == 0)
         {
             if (currentLevelNo <= LastScene)
             {  
                 ball.SceneStart();
-                ball.StartingTimePeriod = true;
+                ball.StartTimePeriod = true;
                 NextLevel();
             }
             else
@@ -64,7 +56,15 @@ public class LogicScript : MonoBehaviour
     }
     public void DestroyObjects()
     {
-        Destroy(Ball);
+        Destroy(ball);
         Destroy(Platform);
-    }      
+    }
+    public void CheckBarricade() 
+    {
+        if (bricksLeft == BrickKey)
+        {        
+            (RemoveBarricades)?.Invoke();  
+            RemoveBarricades = null;
+        }          
+    }  
 }

@@ -7,35 +7,29 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     public int brickHealth;
-    public GameObject logicManagerr;
-    LogicScript logic;
-    public int brickType;
+    public LogicScript logic;
+    public int brickType; // 1=barikat, 2=kapsul, 3=taret, 0=normal
     public GameObject Capsule;
     public GameObject TurretPart;
     public GameObject barricade;
     // Start is called before the first frame update
     void Start()
     {
-        logicManagerr = GameObject.Find("LogicManager");
-        logic = logicManagerr.GetComponent<LogicScript>();
+        logic = GameObject.Find("LogicManager").GetComponent<LogicScript>();
         logic.bricksLeft++;
         if (brickType == 1)
         {
             logic.BrickKey++;
         }
-        StartCoroutine(TurretShoot());
+        if (brickType == 3)
+        {
+            StartCoroutine(TurretShoot());
+        }
+        SubscribeToLogic();
     }
-
-    void Update()
-    {            
-        
-        
-    }
-    
-
-    IEnumerator TurretShoot()
+    IEnumerator TurretShoot() //brick tipi 3 ise
     {
-        while (brickType == 3)
+        while (true)
         {
             yield return new WaitForSeconds(5f);
             Quaternion Turret = Quaternion.Euler(0, 0, Random.Range(-8, 8));
@@ -46,46 +40,49 @@ public class Brick : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       if (collision.gameObject.tag == "ball")
+        if (collision.gameObject.tag == "ball")
         {
-            BrickHit();
             BrickDrop();
+            BrickHit();
+        }
 
-       }  
-       
     }
     void BrickHit()
     {
+
+        brickHealth--;
+
         if (brickHealth == 0)
         {
-            if (brickType == 1)
-            {
-                logic.BrickKey--;
-            }
-            logic.bricksLeft--;
-            Destroy(gameObject);
+            BrickDie();
         }
-        if (logic.bricksLeft == logic.BrickKey)
+    }
+    void BrickDie()
+    {
+        if (brickType == 1) //barikat kitliyse
         {
-            Destroy(barricade);
-            brickHealth = 1;
+            logic.BrickKey--; //toplam
         }
+
+        logic.bricksLeft--;
+        logic.CheckBarricade();
+        Destroy(gameObject);
     }
     void BrickDrop()
     {
-
         if (brickType == 2)
         {
             Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
             Instantiate(Capsule, transform.position, Rot);
-        }
-        if (brickType == 4)
-        {
-            Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-10, 10));
-            Instantiate(Capsule, transform.position, Rot);
-            Debug.Log("instantiated");
-        }
-        brickHealth--;
+        }       
     }
-    
+    void SubscribeToLogic()
+    {
+        logic.RemoveBarricades += RemoveBarricade;
+    }
+    void RemoveBarricade()
+    {
+        Destroy(barricade);
+        brickHealth = 1; 
+    }
 }
