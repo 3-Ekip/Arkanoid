@@ -162,4 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8063865497075211328}
-  capSpeed: 10
+  capSpeed: 15

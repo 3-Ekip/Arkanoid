@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     public float StartForce;
     public GameObject ball;
-    public LogicScript logic;
+    public GameManager logic;
     public Platform Pscript; 
     public bool StartTimePeriod; //TheBoolThatChecksIfTheBallShouldBeLockedRightAboveThePlatformOrNot
     // Start is called before the first frame update
@@ -38,6 +38,7 @@ public class Ball : MonoBehaviour
     }
     void ShootUp()
     {
+        Debug.Log("ShootUp");
         StartTimePeriod = false;
         Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-20, 20));
         transform.rotation = Rot;
@@ -54,11 +55,14 @@ public class Ball : MonoBehaviour
         }
         if (collision.gameObject.tag == "floor")
         {
-            Pscript.HealthDecrease();           
+            Debug.Log("Collided with floor");
+            Pscript.HealthDecrease();
+            StartCoroutine(Respawn());     
         }
     }
     public IEnumerator Respawn()
     {
+        Debug.Log("Respawn");
         StartTimePeriod = true;
         rb.velocity = new Vector2(0, 0);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;

@@ -15,7 +15,7 @@ public class CapsuleScript : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("platform"))
+        if (collision.gameObject.CompareTag("platform") || transform.position.y < -7)
         {
             Destroy(gameObject);
         }

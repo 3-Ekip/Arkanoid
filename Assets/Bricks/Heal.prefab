@@ -144,8 +144,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickHealth: 1
-  logicManagerr: {fileID: 0}
-  brickType: 4
+  logic: {fileID: 0}
+  brickType: 2
   Capsule: {fileID: 7649741347855846844, guid: 426f337bcbf04d64a8474ee39c8c1581, type: 3}
   TurretPart: {fileID: 0}
   barricade: {fileID: 0}
+  ball: {fileID: 0}

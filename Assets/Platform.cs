@@ -10,7 +10,7 @@ public class Platform : MonoBehaviour
     public float speed = 5f;
     public float maxX;
     public float  negativemaxX;
-    public LogicScript logic;
+    public GameManager logic;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -36,7 +36,7 @@ public class Platform : MonoBehaviour
     {
         if (collision.gameObject.tag == "damage")//switch-case olabilir
         {
-            logic.HealthPoints--;
+            HealthDecrease();
         }
         if (collision.gameObject.tag == "heart")
         {
@@ -46,16 +46,9 @@ public class Platform : MonoBehaviour
     public void HealthDecrease()
     {
         logic.HealthPoints--;
-        if (logic.HealthPoints == 0)
-        {
-            logic.DestroyObjects();
-            SceneManager.LoadScene(logic.GameOverSceneNum);
-            logic.currentLevelNo = logic.GameOverSceneNum;
-            Destroy(gameObject);
-        }
-        else
+        if (logic.HealthPoints <= 0)
         {          
-            StartCoroutine(ball.Respawn());        
+            logic.RestartGame();
         }
     }
 }

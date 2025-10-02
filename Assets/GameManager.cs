@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class LogicScript : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public int bricksLeft;
     public int GameOverSceneNum;
@@ -16,48 +16,44 @@ public class LogicScript : MonoBehaviour
     public int LastScene;
     public event Action RemoveBarricades;
     GameObject Platform;
+    GameObject Ball;
+    public GameObject Canvas;
     public Ball ball;
     // Start is called before the first frame update
     void Start()
     {
         Platform = GameObject.Find("Platform");
+        Ball = GameObject.Find("Ball");
         DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(Canvas);
         currentLevelNo++;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentLevelNo ==GameOverSceneNum)
-        { 
-             DestroyObjects();
-        }
-        
-        if (bricksLeft == 0)
-        {
-            if (currentLevelNo <= LastScene)
-            {  
-                ball.SceneStart();
-                ball.StartTimePeriod = true;
-                NextLevel();
-            }
-            else
-            {
-                DestroyObjects();
-                Destroy(gameObject);
-            }            
-        }        
+             
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene(currentLevelNo);
+        
         ball.StartForce += (float)0.8;
+        ball.SceneStart();
+        ball.StartTimePeriod = true;
+        BrickKey = 0;
+        bricksLeft = 0;
+        SceneManager.LoadScene(currentLevelNo);   
         currentLevelNo++;
+        if (currentLevelNo == GameOverSceneNum)
+        {
+            DestroyObjects();
+        }   
     }
     public void DestroyObjects()
     {
-        Destroy(ball);
+        Destroy(Ball);
         Destroy(Platform);
+        Destroy(Canvas);
     }
     public void CheckBarricade() 
     {
@@ -67,4 +63,10 @@ public class LogicScript : MonoBehaviour
             RemoveBarricades = null;
         }          
     }  
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(GameOverSceneNum);
+        currentLevelNo = GameOverSceneNum;
+        DestroyObjects();
+    }
 }
