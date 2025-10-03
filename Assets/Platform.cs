@@ -1,5 +1,7 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +11,13 @@ public class Platform : MonoBehaviour
     public Ball ball;
     public float speed = 5f;
     public float maxX;
-    public float  negativemaxX;
+    public float negativemaxX;
     public GameManager logic;
+    public GameObject ShieldThatIsInstantiated;
+    public GameObject shield;
+    public int TheShieldIsActive = 0;
+    ShieldScript shieldscript;
+    public event Action SyncTheShield;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -20,12 +27,21 @@ public class Platform : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             platformDrag();
+            if (TheShieldIsActive >= 1)
+            {
+                shield = GameObject.Find("Shield(Clone)");
+                shieldscript = shield.GetComponent<ShieldScript>();
+                (SyncTheShield)?.Invoke();
+                shieldscript.ShieldDrag();
+                Debug.Log("Shield Dragged");
+            }
             if (ball.StartTimePeriod)
             {
                 ball.BallStartDrag();
             }
         }
     }
+    
     public void platformDrag()
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
@@ -41,6 +57,11 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.tag == "heart")
         {
             logic.HealthPoints++;
+        }
+        if (collision.gameObject.tag == "shieldcapsule")
+        {
+            Vector2 shieldpos = new Vector2(transform.position.x, transform.position.y +0.6f);
+            Instantiate(ShieldThatIsInstantiated, shieldpos, transform.rotation);
         }
     }
     public void HealthDecrease()

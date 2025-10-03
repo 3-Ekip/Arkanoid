@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ShieldScript : MonoBehaviour
+{
+    public Platform platform;
+    public float ShieldsY = -4.7f;
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        platform = GameObject.Find("Platform").GetComponent<Platform>();
+        SubscribeToSync();
+        if (platform.TheShieldIsActive >0)
+        {
+            ShieldsY = ShieldsY + 0.3f*platform.TheShieldIsActive;
+        }
+        platform.TheShieldIsActive++;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "damage")
+        {
+            platform.SyncTheShield -= ShieldDrag;
+            platform.TheShieldIsActive--;
+            Destroy(this.gameObject);
+        }
+    }
+    public void ShieldDrag()
+    {
+        float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        float clampedX = Mathf.Clamp(mousePos, platform.negativemaxX, platform.maxX);
+        transform.position = new Vector2(clampedX, ShieldsY);
+    }
+    void SubscribeToSync()
+    {
+       platform.SyncTheShield += ShieldDrag;
+    }
+}

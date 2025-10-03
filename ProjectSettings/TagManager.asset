@@ -9,6 +9,8 @@ TagManager:
   - ball
   - damage
   - heart
+  - shield
+  - shieldcapsule
   layers:
   - Default
   - TransparentFX
