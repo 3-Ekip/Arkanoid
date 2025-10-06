@@ -29,14 +29,14 @@ public class GameManager : MonoBehaviour
         currentLevelNo++;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void VoidThatCallsNextLevel()
     {
-             
+        StartCoroutine(NextLevel());
     }
-    public void NextLevel()
+    public IEnumerator NextLevel()
     {
-        
+        Debug.Log("Next Level");
+        yield return new WaitForSeconds(2f);
         ball.StartForce += (float)0.8;
         ball.SceneStart();
         ball.StartTimePeriod = true;
@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
         if (currentLevelNo == GameOverSceneNum)
         {
             DestroyObjects();
-        }   
+        }
+        Debug.Log("Level Loaded");
     }
     public void DestroyObjects()
     {

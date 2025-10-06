@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShieldScript : MonoBehaviour
 {
     public Platform platform;
-    public float ShieldsY = -4.7f;
+    public float ShieldsY;
 
     private void Start()
     {
@@ -14,14 +14,14 @@ public class ShieldScript : MonoBehaviour
         SubscribeToSync();
         if (platform.TheShieldIsActive >0)
         {
-            ShieldsY = ShieldsY + 0.3f*platform.TheShieldIsActive;
+            ShieldsY = ShieldsY + 0.2f*platform.TheShieldIsActive;
         }
         platform.TheShieldIsActive++;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "damage")
-        {
+        {           
             platform.SyncTheShield -= ShieldDrag;
             platform.TheShieldIsActive--;
             Destroy(this.gameObject);

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public GameObject Explosion;
     public int brickHealth;
     public GameManager logic;
     public int brickType; // 1=barikat, 2=kapsul, 3=taret, 0=normal
@@ -13,6 +14,7 @@ public class Brick : MonoBehaviour
     public GameObject TurretPart;
     public GameObject barricade;
     public Ball ball;
+    public LayerMask targetLayers; 
     // Start is called before the first frame update
     void Start()
     {
@@ -47,12 +49,12 @@ public class Brick : MonoBehaviour
         }
 
     }
-    void BrickHit()
+    public void BrickHit()
     {
 
         brickHealth--;
 
-        if (brickHealth == 0)
+        if (brickHealth == 0) 
         {
             BrickDie();
         }
@@ -63,23 +65,46 @@ public class Brick : MonoBehaviour
         {
             logic.BrickKey--; //toplam
         }
-
+        if (brickType == 4) //patlayýcý tuðla ise
+        {
+            VoidThatExplodes();
+        }
+        BrickDeathCheck();
+    }
+    public void BrickDeathCheck()
+    {
         logic.bricksLeft--;
         logic.CheckBarricade();
         if (logic.bricksLeft == 0)
         {
             if (logic.currentLevelNo <= logic.LastScene)
             {
-                logic.NextLevel();
+                logic.VoidThatCallsNextLevel();
             }
             else
             {
-               logic.DestroyObjects();
-                Destroy(gameObject);
+                logic.DestroyObjects();
             }
-        }      
+            Destroy(gameObject);
+        }
         Destroy(gameObject);
     }
+    public void VoidThatExplodes()
+    {
+        Debug.Log("Explosion");
+        Vector2 center = transform.position;
+        Vector2 boxSize = new Vector2(1.5f, 1.25f);
+
+        // Find all colliders in the box
+        Collider2D[] hits = Physics2D.OverlapBoxAll(center, boxSize, 0f, targetLayers);
+        Debug.Log("Explosion2");
+        foreach (Collider2D col in hits)
+        {
+            col.GetComponent<Brick>()?.BrickHit();
+        }
+        Debug.Log("Explosion3");
+    }
+
     void BrickDrop()
     {
         if (brickType == 2)

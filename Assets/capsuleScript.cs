@@ -6,8 +6,10 @@ public class CapsuleScript : MonoBehaviour
 {
     public Rigidbody2D rb;
     public int capSpeed;
+    public GameManager logic;
     void Start()
     {
+        logic = GameObject.Find("LogicManager").GetComponent<GameManager>();
         transform.position = new Vector2(transform.position.x, transform.position.y- (float)0.11);
         rb.AddRelativeForce(new Vector2(0, -capSpeed), ForceMode2D.Impulse);
     }
