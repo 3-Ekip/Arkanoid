@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         bricksLeft = 0;
         SceneManager.LoadScene(currentLevelNo);   
         currentLevelNo++;
-        if (currentLevelNo == GameOverSceneNum)
+        if (currentLevelNo == GameOverSceneNum ||currentLevelNo==LastScene)
         {
             DestroyObjects();
         }

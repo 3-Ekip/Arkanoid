@@ -27,7 +27,7 @@ public class Platform : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             platformDrag();
-            if (TheShieldIsActive >= 1)
+            if (TheShieldIsActive >0)
             {
                 shield = GameObject.Find("Shield(Clone)");
                 shieldscript = shield.GetComponent<ShieldScript>();
@@ -60,9 +60,13 @@ public class Platform : MonoBehaviour
         }
         if (collision.gameObject.tag == "shieldcapsule")
         {
-            Vector2 shieldpos = new Vector2(transform.position.x, transform.position.y +0.6f);
-            Instantiate(ShieldThatIsInstantiated, shieldpos, transform.rotation);
+            InstantiateShield();
         }
+    }
+    public void InstantiateShield()
+    {
+        Vector2 shieldpos = new Vector2(transform.position.x, transform.position.y + 0.6f);
+        Instantiate(ShieldThatIsInstantiated, shieldpos, transform.rotation);
     }
     public void HealthDecrease()
     {

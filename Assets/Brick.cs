@@ -67,9 +67,12 @@ public class Brick : MonoBehaviour
         }
         if (brickType == 4) //patlayýcý tuðla ise
         {
-            VoidThatExplodes();
+            StartCoroutine(VoidThatExplodes());
         }
-        BrickDeathCheck();
+        else
+        {
+            BrickDeathCheck();
+        }
     }
     public void BrickDeathCheck()
     {
@@ -89,8 +92,10 @@ public class Brick : MonoBehaviour
         }
         Destroy(gameObject);
     }
-    public void VoidThatExplodes()
+    public IEnumerator VoidThatExplodes()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(1f);
         Debug.Log("Explosion");
         Vector2 center = transform.position;
         Vector2 boxSize = new Vector2(1.5f, 1.25f);
@@ -100,18 +105,29 @@ public class Brick : MonoBehaviour
         Debug.Log("Explosion2");
         foreach (Collider2D col in hits)
         {
-            col.GetComponent<Brick>()?.BrickHit();
+            Brick BlownUpBrick = col.GetComponent<Brick>();
+            BlownUpBrick.BrickHit();
+            if(BlownUpBrick.brickType==2)
+            {
+                BlownUpBrick.BrickDrop();
+            }
         }
         Debug.Log("Explosion3");
+        BrickDeathCheck();
     }
 
-    void BrickDrop()
+
+    public void BrickDrop()
     {
         if (brickType == 2)
         {
-            Instantiate(Capsule, transform.position, transform.rotation);
+            BrickDropCapsule();
         }       
     }
+    public void BrickDropCapsule()
+    {
+        Instantiate(Capsule, transform.position, transform.rotation);
+    }   
     void SubscribeToLogic()
     {
         logic.RemoveBarricades += RemoveBarricade;
