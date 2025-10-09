@@ -15,6 +15,8 @@ public class Platform : MonoBehaviour
     public GameManager logic;
     public GameObject ShieldThatIsInstantiated;
     public GameObject shield;
+    public GameObject Beam;
+    public bool BeamIsActive = false;
     public int TheShieldIsActive = 0;
     ShieldScript shieldscript;
     public event Action SyncTheShield;
@@ -34,6 +36,11 @@ public class Platform : MonoBehaviour
                 (SyncTheShield)?.Invoke();
                 shieldscript.ShieldDrag();
                 Debug.Log("Shield Dragged");
+            }
+            if (BeamIsActive)
+            {
+                GameObject beam = GameObject.Find("Beam(Clone)");
+                beam.transform.position = new Vector2(transform.position.x, 0);
             }
             if (ball.StartTimePeriod)
             {
@@ -67,6 +74,14 @@ public class Platform : MonoBehaviour
     {
         Vector2 shieldpos = new Vector2(transform.position.x, transform.position.y + 0.6f);
         Instantiate(ShieldThatIsInstantiated, shieldpos, transform.rotation);
+    }
+    public void InstantiateBeam()
+    {
+        Vector2 beampos = new Vector2(transform.position.x, 0);
+        Instantiate(Beam, beampos, transform.rotation);
+        GameObject beam = GameObject.Find("Beam(Clone)");
+        DontDestroyOnLoad(beam);
+        BeamIsActive = true;
     }
     public void HealthDecrease()
     {

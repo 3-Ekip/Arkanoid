@@ -47,8 +47,18 @@ public class Brick : MonoBehaviour
             BrickDrop();
             BrickHit();
         }
-
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("TriggerStay");
+        if (collision.gameObject.tag == "ball")
+        {
+            BrickDrop();
+            BrickHit();
+        }
+        Debug.Log("TriggerStayEnd");
+    }
+
     public void BrickHit()
     {
 
@@ -105,12 +115,15 @@ public class Brick : MonoBehaviour
         Debug.Log("Explosion2");
         foreach (Collider2D col in hits)
         {
-            Brick BlownUpBrick = col.GetComponent<Brick>();
-            BlownUpBrick.BrickHit();
-            if(BlownUpBrick.brickType==2)
-            {
-                BlownUpBrick.BrickDrop();
-            }
+   
+            
+               Brick BlownUpBrick = col.GetComponent<Brick>();
+               if (BlownUpBrick.brickType==2)
+               {
+                   BlownUpBrick.BrickDrop();
+               }
+               BlownUpBrick.BrickHit();
+            
         }
         Debug.Log("Explosion3");
         BrickDeathCheck();

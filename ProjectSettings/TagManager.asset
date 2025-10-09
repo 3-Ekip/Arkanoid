@@ -11,6 +11,7 @@ TagManager:
   - heart
   - shield
   - shieldcapsule
+  - WALL
   layers:
   - Default
   - TransparentFX
