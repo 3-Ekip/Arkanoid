@@ -114,16 +114,13 @@ public class Brick : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapBoxAll(center, boxSize, 0f, targetLayers);
         Debug.Log("Explosion2");
         foreach (Collider2D col in hits)
-        {
-   
-            
+        {      
                Brick BlownUpBrick = col.GetComponent<Brick>();
                if (BlownUpBrick.brickType==2)
                {
                    BlownUpBrick.BrickDrop();
                }
-               BlownUpBrick.BrickHit();
-            
+               BlownUpBrick.BrickHit();          
         }
         Debug.Log("Explosion3");
         BrickDeathCheck();

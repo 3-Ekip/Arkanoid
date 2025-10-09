@@ -808,6 +808,7 @@ MonoBehaviour:
   LastScene: 10
   Canvas: {fileID: 1581943146}
   ball: {fileID: 674675295}
+  HealthText: {fileID: 0}
 --- !u!4 &528226698
 Transform:
   m_ObjectHideFlags: 0
@@ -2200,11 +2201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416266217293804405, guid: d281f330ca403884dbb1262ab70f5683, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.96714985
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 8416266217293804405, guid: d281f330ca403884dbb1262ab70f5683, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.30833948
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 8416266217293804405, guid: d281f330ca403884dbb1262ab70f5683, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3035,6 +3036,8 @@ MonoBehaviour:
   logic: {fileID: 528226697}
   ShieldThatIsInstantiated: {fileID: 5139590111122991510, guid: ae39f289da7f4514fa652b5c6926b053, type: 3}
   shield: {fileID: 0}
+  Beam: {fileID: 0}
+  BeamIsActive: 0
   TheShieldIsActive: 0
 --- !u!61 &1494884411
 BoxCollider2D:
