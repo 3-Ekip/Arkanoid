@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -19,14 +20,21 @@ public class GameManager : MonoBehaviour
     GameObject Ball;
     public GameObject Canvas;
     public Ball ball;
+    public Text HealthText;
     // Start is called before the first frame update
     void Start()
     {
+        UpdateHealth();
+        HealthText.text = "Health: " + HealthPoints.ToString();
         Platform = GameObject.Find("Platform");
         Ball = GameObject.Find("Ball");
         DontDestroyOnLoad(this.gameObject);
         DontDestroyOnLoad(Canvas);
         currentLevelNo++;
+    }
+    public void UpdateHealth()
+    {
+        HealthText.text = "Health: " + HealthPoints.ToString();
     }
 
     public void VoidThatCallsNextLevel()

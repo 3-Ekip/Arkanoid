@@ -1,9 +1,10 @@
-using System.Collections;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Platform : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.tag == "heart")
         {
             logic.HealthPoints++;
+            logic.UpdateHealth(); 
         }
         if (collision.gameObject.tag == "shieldcapsule")
         {
@@ -90,5 +92,6 @@ public class Platform : MonoBehaviour
         {          
             logic.RestartGame();
         }
+        logic.UpdateHealth();
     }
 }
