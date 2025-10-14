@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+
 
 public class Platform : MonoBehaviour
 {
@@ -66,6 +63,14 @@ public class Platform : MonoBehaviour
         {
             InstantiateShield();
         }
+        if (collision.gameObject.tag == "PowerUp")
+        {
+            float randomPwrUpGen= UnityEngine.Random.Range(1, 4);
+            if (randomPwrUpGen < 5)
+            {
+            InstantiateBeam();                
+            }
+        }
     }
     public void InstantiateShield()
     {
@@ -80,7 +85,7 @@ public class Platform : MonoBehaviour
     {
         Vector2 beampos = new Vector2(transform.position.x, 0);
         GameObject xyz = Instantiate(Beam, beampos, transform.rotation);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.7f);
         Destroy(xyz);
     }
     public void HealthDecrease()

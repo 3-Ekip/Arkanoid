@@ -155,10 +155,10 @@ MonoBehaviour:
   TurretPart: {fileID: 0}
   barricade: {fileID: 0}
   ball: {fileID: 0}
-  Beam: {fileID: 6282817911523751099, guid: 34b0ced91eac9f74abbaf116dfbb08f4, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 0
+  PowerUp: {fileID: 1752142894514761666, guid: 98f09a00e53a8b247a2542211a103a20, type: 3}
 --- !u!1001 &474395012346771353
 PrefabInstance:
   m_ObjectHideFlags: 0

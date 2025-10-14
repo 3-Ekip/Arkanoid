@@ -12,4 +12,8 @@ public class PatlayanTuğla : AtaTuğla
     {
         Debug.Log("Patla");
     }
+    public override void SoyutMethod()
+    {
+        throw new System.NotImplementedException();
+    }
 }

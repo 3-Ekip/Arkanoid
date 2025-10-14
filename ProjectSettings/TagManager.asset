@@ -12,6 +12,7 @@ TagManager:
   - shield
   - shieldcapsule
   - WALL
+  - PowerUp
   layers:
   - Default
   - TransparentFX

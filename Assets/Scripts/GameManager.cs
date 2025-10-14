@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public int bricksLeft;
     public int GameOverSceneNum;
     public int BrickKey;
@@ -24,6 +25,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
+
         UpdateHealth();
         HealthText.text = "Health: " + HealthPoints.ToString();
         Platform = GameObject.Find("Platform");

@@ -17,5 +17,9 @@ public class KumTuğla : AtaTuğla
     {
         Debug.Log("Can Azalt");
     }
+    public override void SoyutMethod()
+    {
+        throw new System.NotImplementedException();
+    }
 }
 

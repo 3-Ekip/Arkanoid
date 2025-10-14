@@ -40,9 +40,11 @@ public class Ball : MonoBehaviour
     {
         Debug.Log("ShootUp");
         StartTimePeriod = false;
-        Quaternion Rot = Quaternion.Euler(0, 0, Random.Range(-20, 20));
-        transform.rotation = Rot;
-        rb.AddRelativeForce(new Vector2(0, StartForce), ForceMode2D.Impulse);
+        if(rb.velocity.magnitude==0)
+        {
+            rb.AddRelativeForce(new Vector2(0, StartForce), ForceMode2D.Impulse);
+        }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

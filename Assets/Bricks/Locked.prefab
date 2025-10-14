@@ -612,6 +612,7 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 0
+  PowerUp: {fileID: 1752142894514761666, guid: 98f09a00e53a8b247a2542211a103a20, type: 3}
 --- !u!1 &6990625100389159636
 GameObject:
   m_ObjectHideFlags: 0

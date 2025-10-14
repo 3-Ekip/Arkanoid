@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 0}
   brickHealth: 1
   logic: {fileID: 0}
   brickType: 2
@@ -150,3 +151,7 @@ MonoBehaviour:
   TurretPart: {fileID: 0}
   barricade: {fileID: 0}
   ball: {fileID: 0}
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  PowerUp: {fileID: 1752142894514761666, guid: 98f09a00e53a8b247a2542211a103a20, type: 3}

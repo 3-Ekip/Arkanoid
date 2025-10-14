@@ -15,6 +15,7 @@ public class Brick : MonoBehaviour
     public GameObject barricade;
     public Ball ball;
     public LayerMask targetLayers; 
+    public GameObject PowerUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -101,9 +102,9 @@ public class Brick : MonoBehaviour
             Destroy(gameObject);
         }
         float dropRNG = Random.Range(0f, 1f);
-        if (dropRNG < 0.1f)
+        if (dropRNG < 0.05f)
         {
-            Instantiate(Explosion, transform.position, transform.rotation);
+            Instantiate(PowerUp, transform.position, transform.rotation);
         }
         Destroy(gameObject);
     }
@@ -111,14 +112,10 @@ public class Brick : MonoBehaviour
     public IEnumerator VoidThatExplodes()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Explosion");
+        yield return new WaitForSeconds(0.6f);
         Vector2 center = transform.position;
         Vector2 boxSize = new Vector2(1.5f, 1.25f);
-
-        // Find all colliders in the box
         Collider2D[] hits = Physics2D.OverlapBoxAll(center, boxSize, 0f, targetLayers);
-        Debug.Log("Explosion2");
         foreach (Collider2D col in hits)
         {      
                Brick BlownUpBrick = col.GetComponent<Brick>();
@@ -128,7 +125,6 @@ public class Brick : MonoBehaviour
                }
                BlownUpBrick.BrickHit();          
         }
-        Debug.Log("Explosion3");
         BrickDeathCheck();
     }
 

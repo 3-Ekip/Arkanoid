@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AtaTuðla : MonoBehaviour
+public abstract class AtaTuðla : MonoBehaviour
 {
+    public static AtaTuðla instance;
+    protected int sayý; 
     public void Yaz()
     {
         Çalýþ();
         Debug.Log("Ben Ata Sýnýfýyým");
+        GameManager.instance.bricksLeft++;
     }
     private void Çalýþ()
     {
@@ -28,5 +31,6 @@ public class AtaTuðla : MonoBehaviour
     public virtual void GetHit()
     {
         Debug.Log("Kýrýl");
-    }   
+    }
+    public abstract void SoyutMethod();
 }
