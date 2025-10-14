@@ -100,8 +100,14 @@ public class Brick : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        float dropRNG = Random.Range(0f, 1f);
+        if (dropRNG < 0.1f)
+        {
+            Instantiate(Explosion, transform.position, transform.rotation);
+        }
         Destroy(gameObject);
     }
+    
     public IEnumerator VoidThatExplodes()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;

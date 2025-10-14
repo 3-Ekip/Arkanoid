@@ -155,6 +155,7 @@ MonoBehaviour:
   TurretPart: {fileID: 0}
   barricade: {fileID: 0}
   ball: {fileID: 0}
+  Beam: {fileID: 6282817911523751099, guid: 34b0ced91eac9f74abbaf116dfbb08f4, type: 3}
   targetLayers:
     serializedVersion: 2
     m_Bits: 0

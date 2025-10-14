@@ -8,15 +8,15 @@ using UnityEngine.UIElements;
 
 public class Platform : MonoBehaviour
 {
-    Rigidbody2D rb;//gereksiz
     public Ball ball;
     public float speed = 5f;
     public float maxX;
     public float negativemaxX;
     public GameManager logic;
+    public GameObject Beam;
     public GameObject ShieldThatIsInstantiated;
     public GameObject shield;
-    public GameObject Beam;
+
     public bool BeamIsActive = false;
     public int TheShieldIsActive = 0;
     ShieldScript shieldscript;
@@ -37,11 +37,6 @@ public class Platform : MonoBehaviour
                 (SyncTheShield)?.Invoke();
                 shieldscript.ShieldDrag();
                 Debug.Log("Shield Dragged");
-            }
-            if (BeamIsActive)
-            {
-                GameObject beam = GameObject.Find("Beam(Clone)");
-                beam.transform.position = new Vector2(transform.position.x, 0);
             }
             if (ball.StartTimePeriod)
             {
@@ -79,11 +74,14 @@ public class Platform : MonoBehaviour
     }
     public void InstantiateBeam()
     {
+        StartCoroutine(InstantiateBeamCR());
+    }
+    public IEnumerator InstantiateBeamCR()
+    {
         Vector2 beampos = new Vector2(transform.position.x, 0);
-        Instantiate(Beam, beampos, transform.rotation);
-        GameObject beam = GameObject.Find("Beam(Clone)");
-        DontDestroyOnLoad(beam);
-        BeamIsActive = true;
+        GameObject xyz = Instantiate(Beam, beampos, transform.rotation);
+        yield return new WaitForSeconds(2f);
+        Destroy(xyz);
     }
     public void HealthDecrease()
     {
