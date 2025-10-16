@@ -163,4 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -8040127471601554957}
   capSpeed: 4
+  Ycapsuleheightdiff: 0.11
   logic: {fileID: 0}

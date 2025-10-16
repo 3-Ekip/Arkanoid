@@ -30,7 +30,7 @@ public class ShieldScript : MonoBehaviour
     public void ShieldDrag()
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        float clampedX = Mathf.Clamp(mousePos, platform.negativemaxX, platform.maxX);
+        float clampedX = Mathf.Clamp(mousePos,Platform.negativemaxX, Platform.maxX);
         transform.position = new Vector2(clampedX, ShieldsY);
     }
     void SubscribeToSync()

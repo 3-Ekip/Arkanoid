@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8390812499166126110}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,12 +144,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 0}
   brickHealth: 1
-  logicManagerr: {fileID: 0}
+  logic: {fileID: 0}
   brickType: 3
   Capsule: {fileID: 7649741347855846844, guid: 0b9089c0b05641842b59f355b6213e9b, type: 3}
   TurretPart: {fileID: 6042937489668336190}
   barricade: {fileID: 0}
+  ball: {fileID: 0}
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  PowerUp: {fileID: 0}
 --- !u!1 &6042937489668336190
 GameObject:
   m_ObjectHideFlags: 0

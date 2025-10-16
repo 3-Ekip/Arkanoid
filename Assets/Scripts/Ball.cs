@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour
     public void BallStartDrag()
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        float clampedX = Mathf.Clamp(mousePos, Pscript.negativemaxX, Pscript.maxX);
+        float clampedX = Mathf.Clamp(mousePos, Platform.negativemaxX, Platform.maxX);
         transform.position = new Vector2(clampedX, -4.76f);
     }
     public void SceneStart()

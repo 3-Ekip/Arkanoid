@@ -41,7 +41,7 @@ public class Brick : MonoBehaviour
             Instantiate(Capsule, transform.position, transform.rotation);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "ball")
         {
@@ -49,7 +49,7 @@ public class Brick : MonoBehaviour
             BrickHit();
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    protected void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("TriggerStay");
         if (collision.gameObject.tag == "ball")
@@ -60,9 +60,8 @@ public class Brick : MonoBehaviour
         Debug.Log("TriggerStayEnd");
     }
 
-    public void BrickHit()
+    public virtual void BrickHit()
     {
-
         brickHealth--;
 
         if (brickHealth == 0) 
@@ -70,7 +69,7 @@ public class Brick : MonoBehaviour
             BrickDie();
         }
     }
-    void BrickDie()
+    public void BrickDie()
     {
         if (brickType == 1) //barikat kitliyse
         {
@@ -119,11 +118,11 @@ public class Brick : MonoBehaviour
         foreach (Collider2D col in hits)
         {      
                Brick BlownUpBrick = col.GetComponent<Brick>();
-               if (BlownUpBrick.brickType==2)
+               if (BlownUpBrick?.brickType==2)
                {
-                   BlownUpBrick.BrickDrop();
+                   BlownUpBrick?.BrickDrop();
                }
-               BlownUpBrick.BrickHit();          
+               BlownUpBrick?.BrickHit();          
         }
         BrickDeathCheck();
     }

@@ -7,17 +7,20 @@ public class Platform : MonoBehaviour
 {
     public Ball ball;
     public float speed = 5f;
-    public float maxX;
-    public float negativemaxX;
+    public static float maxX = 2.24f ;
+    public static float negativemaxX = -2.24f;
     public GameManager logic;
     public GameObject Beam;
     public GameObject ShieldThatIsInstantiated;
     public GameObject shield;
+    public GameObject PTurretR;
+    public GameObject PTurretL;
 
     public bool BeamIsActive = false;
     public int TheShieldIsActive = 0;
     ShieldScript shieldscript;
     public event Action SyncTheShield;
+    public event Action SyncThePTurret;    
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -38,6 +41,10 @@ public class Platform : MonoBehaviour
             if (ball.StartTimePeriod)
             {
                 ball.BallStartDrag();
+            }
+            if(PTurretScript.PTurretActive)
+            {
+                (SyncThePTurret)?.Invoke();
             }
         }
     }
@@ -66,12 +73,26 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.tag == "PowerUp")
         {
             float randomPwrUpGen= UnityEngine.Random.Range(1, 4);
-            if (randomPwrUpGen < 5)
+            if (randomPwrUpGen <0)
             {
             InstantiateBeam();                
             }
+            else if (randomPwrUpGen <5)
+            {
+                InstantiatePTurret();
+            }
+            else
+            {
+                logic.HealthPoints++;
+                logic.UpdateHealth();
+            }
         }
     }
+    void InstantiatePTurret()
+    {
+        Instantiate(PTurretL, new Vector2(transform.position.x - 0.675f, transform.position.y + 0.24f), transform.rotation);
+        Instantiate(PTurretR, new Vector2(transform.position.x + 0.675f, transform.position.y + 0.24f), transform.rotation);
+    }   
     public void InstantiateShield()
     {
         Vector2 shieldpos = new Vector2(transform.position.x, transform.position.y + 0.6f);

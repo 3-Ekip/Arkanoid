@@ -13,6 +13,7 @@ TagManager:
   - shieldcapsule
   - WALL
   - PowerUp
+  - Brick
   layers:
   - Default
   - TransparentFX
