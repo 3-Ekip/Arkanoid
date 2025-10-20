@@ -18,11 +18,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - DoesntExplode
   - Water
   - UI
-  - 
-  - 
+  - LayerForBricksAndCapsules
+  - Ball
   - 
   - 
   - 

@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class PTurretScript : MonoBehaviour
 {
-    public int TotalBullets = 5;
+    
+    public int TotalBullets;
     public GameObject Capsule;
     public static bool PTurretActive;
     public Platform platform;
     public float RorL; // Right or Left
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         platform = GameObject.Find("Platform").GetComponent<Platform>();
         SubscribeToPlatform();
         PTurretActive = true;
@@ -20,8 +22,9 @@ public class PTurretScript : MonoBehaviour
     public void PTurretDrag()
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        float clampedX = Mathf.Clamp(mousePos+RorL, Platform.negativemaxX, Platform.maxX);
+        float clampedX = Mathf.Clamp(mousePos+RorL, Platform.negativemaxX+RorL, Platform.maxX+RorL);
         transform.position = new Vector2(clampedX, transform.position.y);
+        
     }
     void SubscribeToPlatform() 
     { 
@@ -31,12 +34,12 @@ public class PTurretScript : MonoBehaviour
     {
         while (TotalBullets>0)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             Instantiate(Capsule, transform.position, transform.rotation);
             TotalBullets--;
         }
-        PTurretActive = false;
         platform.SyncThePTurret -= PTurretDrag;
+        PTurretActive = false;
         Destroy(this.gameObject);
     }
 }

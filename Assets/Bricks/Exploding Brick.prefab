@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Max: 100
   Explosion: {fileID: 5932491570591217497, guid: 9fdcf7946f4d6a847968384e5e476c5f, type: 3}
   brickHealth: 1
   logic: {fileID: 0}
@@ -241,7 +242,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2
   PowerUp: {fileID: 1752142894514761666, guid: 98f09a00e53a8b247a2542211a103a20, type: 3}
 --- !u!1 &3332436066472617909
 GameObject:

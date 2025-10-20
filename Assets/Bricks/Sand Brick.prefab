@@ -179,7 +179,6 @@ GameObject:
   - component: {fileID: 775762273442031215}
   - component: {fileID: 997073260906672758}
   - component: {fileID: 3562962827898633615}
-  - component: {fileID: 3980729982939353607}
   - component: {fileID: 284981332290604343}
   m_Layer: 0
   m_Name: Sand Brick
@@ -304,30 +303,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3980729982939353607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5190082854401456663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Explosion: {fileID: 0}
-  brickHealth: 3
-  logic: {fileID: 0}
-  brickType: 0
-  Capsule: {fileID: 0}
-  TurretPart: {fileID: 0}
-  barricade: {fileID: 0}
-  ball: {fileID: 0}
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  PowerUp: {fileID: 1752142894514761666, guid: 98f09a00e53a8b247a2542211a103a20, type: 3}
 --- !u!114 &284981332290604343
 MonoBehaviour:
   m_ObjectHideFlags: 0

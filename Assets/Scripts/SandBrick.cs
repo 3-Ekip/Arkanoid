@@ -5,10 +5,7 @@ using UnityEngine;
 public class SandBrick : Brick
 {
     public Sprite[] hitSprites= new Sprite[2];
-    private void Start()
-    {
-        
-    }
+    
     override public void BrickHit()
     {
         brickHealth--;

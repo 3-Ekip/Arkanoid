@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    public int Max = 100;
     public GameObject Explosion;
     public int brickHealth;
     public GameManager logic;
@@ -100,10 +101,16 @@ public class Brick : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        float dropRNG = Random.Range(0f, 1f);
-        if (dropRNG < 0.05f)
+        
+        int dropRNG = Random.Range(0, Max);
+        if (dropRNG < 10)
         {
             Instantiate(PowerUp, transform.position, transform.rotation);
+            Max = 100;
+        }
+        else
+        {
+            Max -= 1;
         }
         Destroy(gameObject);
     }

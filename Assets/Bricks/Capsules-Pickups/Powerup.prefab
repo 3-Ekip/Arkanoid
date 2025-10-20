@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1488191966523853562}
   - component: {fileID: -8040127471601554957}
   - component: {fileID: -8181433137506436312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Powerup
   m_TagString: PowerUp
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

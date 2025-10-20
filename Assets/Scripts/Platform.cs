@@ -55,7 +55,7 @@ public class Platform : MonoBehaviour
         float clampedX = Mathf.Clamp(mousePos, negativemaxX, maxX);
         transform.position = new Vector2(clampedX, transform.position.y);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "damage")//switch-case olabilir
         {

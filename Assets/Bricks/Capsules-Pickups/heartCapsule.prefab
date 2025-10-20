@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5551053310456929486}
   - component: {fileID: 8977666181876436434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 175440005987883872}
   - component: {fileID: -850790763579944844}
   - component: {fileID: 8063865497075211328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: heartCapsule
   m_TagString: heart
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5907609694191118219}
   - component: {fileID: 1410693837505639873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
