@@ -8,7 +8,7 @@ public class PTurretScript : MonoBehaviour
     
     public int TotalBullets;
     public GameObject Capsule;
-    public static bool PTurretActive;
+    public static int PTurretActive=0;
     public Platform platform;
     public float RorL; // Right or Left
     void Start()
@@ -16,7 +16,7 @@ public class PTurretScript : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         platform = GameObject.Find("Platform").GetComponent<Platform>();
         SubscribeToPlatform();
-        PTurretActive = true;
+        PTurretActive++;
         StartCoroutine(PTurretShoot());
     }
     public void PTurretDrag()
@@ -39,7 +39,7 @@ public class PTurretScript : MonoBehaviour
             TotalBullets--;
         }
         platform.SyncThePTurret -= PTurretDrag;
-        PTurretActive = false;
+        PTurretActive--;
         Destroy(this.gameObject);
     }
 }

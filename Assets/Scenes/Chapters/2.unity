@@ -1993,7 +1993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1692736628}
   - component: {fileID: 1692736627}
-  m_Layer: 1
+  m_Layer: 3
   m_Name: Wall
   m_TagString: WALL
   m_Icon: {fileID: 0}

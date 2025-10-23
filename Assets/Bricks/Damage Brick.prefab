@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3445478659089297174}
   - component: {fileID: 1632611167720417828}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6828358000271125253}
   - component: {fileID: 2885420833376226501}
   - component: {fileID: 2304115564935417695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Damage Brick
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Max: 100
   Explosion: {fileID: 0}
   brickHealth: 1
   logic: {fileID: 0}
@@ -253,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1339516945001870816}
   - component: {fileID: 3357798354058429407}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5925556454553514412}
   - component: {fileID: 2756467587406575284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4124114024178403411}
   - component: {fileID: 9142952240198150521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5750468421499066699}
   - component: {fileID: 8063865497075211328}
   - component: {fileID: -850790763579944844}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PdamageCapsule 1
   m_TagString: ball
   m_Icon: {fileID: 0}

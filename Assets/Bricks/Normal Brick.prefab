@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1076603870267521342}
   - component: {fileID: 7135148178550233557}
   - component: {fileID: 1828913101806083032}
-  m_Layer: 1
+  m_Layer: 9
   m_Name: Normal Brick
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690852269669580585, guid: b189f9815f920234aadbf6fb14ebb677, type: 3}
       propertyPath: m_Layer
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4046211665987353134, guid: b189f9815f920234aadbf6fb14ebb677, type: 3}
       propertyPath: m_LocalPosition.x
@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3968684527171820663, guid: b1aa3a7523d33e1419c05a8a15fd3d4e, type: 3}
       propertyPath: m_Layer
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4368723647707355229, guid: b1aa3a7523d33e1419c05a8a15fd3d4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -306,7 +306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4684434412423779902, guid: 4e368927f2d5cd24288d78112c1586e7, type: 3}
       propertyPath: m_Layer
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8028349242007156189, guid: 4e368927f2d5cd24288d78112c1586e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909651693009465907, guid: d8c5abbfd9bb35e4fbc8d2c8be8208d2, type: 3}
       propertyPath: m_Layer
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5497535563817704740, guid: d8c5abbfd9bb35e4fbc8d2c8be8208d2, type: 3}
       propertyPath: m_LocalPosition.x

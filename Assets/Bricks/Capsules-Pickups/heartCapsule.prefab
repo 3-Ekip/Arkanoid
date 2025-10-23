@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5551053310456929486}
   - component: {fileID: 8977666181876436434}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 175440005987883872}
   - component: {fileID: -850790763579944844}
   - component: {fileID: 8063865497075211328}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: heartCapsule
   m_TagString: heart
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8063865497075211328}
-  capSpeed: 4
+  capSpeed: 3
   Ycapsuleheightdiff: 0.11
   logic: {fileID: 0}
 --- !u!50 &8063865497075211328
@@ -219,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5907609694191118219}
   - component: {fileID: 1410693837505639873}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

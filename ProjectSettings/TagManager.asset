@@ -21,10 +21,10 @@ TagManager:
   - DoesntExplode
   - Water
   - UI
-  - LayerForBricksAndCapsules
+  - PlayerTurretCapsule
   - Ball
-  - 
-  - 
+  - Capsule
+  - Brick
   - 
   - 
   - 

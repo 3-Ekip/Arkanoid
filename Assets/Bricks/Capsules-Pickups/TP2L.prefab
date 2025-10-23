@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd38582534d7ca34b82fbf863d5a7fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalBullets: 4809
-  Capsule: {fileID: 6282817911523751099, guid: 34b0ced91eac9f74abbaf116dfbb08f4, type: 3}
+  TotalBullets: 5
+  Capsule: {fileID: 7649741347855846844, guid: 2db5cd25f7b84de49b2c36e19ae8b17b, type: 3}
   platform: {fileID: 0}
   RorL: -0.675

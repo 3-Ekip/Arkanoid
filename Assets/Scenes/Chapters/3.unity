@@ -2319,7 +2319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1690040019}
   - component: {fileID: 1690040018}
-  m_Layer: 1
+  m_Layer: 3
   m_Name: Wall
   m_TagString: WALL
   m_Icon: {fileID: 0}

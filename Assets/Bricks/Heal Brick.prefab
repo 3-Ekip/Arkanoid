@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3238993756724981707}
   - component: {fileID: 6422922806873482800}
   - component: {fileID: 8505575147455337525}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Heal Brick
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Max: 100
   Explosion: {fileID: 0}
   brickHealth: 1
   logic: {fileID: 0}

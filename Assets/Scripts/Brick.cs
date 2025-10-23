@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    public int Max = 100;
+    public static int Max = 100;
     public GameObject Explosion;
     public int brickHealth;
     public GameManager logic;
@@ -99,6 +99,7 @@ public class Brick : MonoBehaviour
             {
                 logic.DestroyObjects();
             }
+            
             Destroy(gameObject);
         }
         
@@ -112,6 +113,7 @@ public class Brick : MonoBehaviour
         {
             Max -= 1;
         }
+        Debug.Log(Max);
         Destroy(gameObject);
     }
     

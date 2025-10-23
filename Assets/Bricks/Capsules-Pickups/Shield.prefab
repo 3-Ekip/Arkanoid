@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 0}
-  ShieldsY: -4.4
+  ShieldsY: -4.5
 --- !u!50 &-5131344264280693092
 Rigidbody2D:
   serializedVersion: 4

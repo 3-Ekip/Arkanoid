@@ -42,7 +42,7 @@ public class Platform : MonoBehaviour
             {
                 ball.BallStartDrag();
             }
-            if(PTurretScript.PTurretActive)
+            if(PTurretScript.PTurretActive>0)
             {
                 (SyncThePTurret)?.Invoke();
             }
@@ -88,7 +88,7 @@ public class Platform : MonoBehaviour
             }
         }
     }
-    void InstantiatePTurret()
+    public void InstantiatePTurret()
     {
         Instantiate(PTurretL, new Vector2(transform.position.x - 0.675f, transform.position.y + 0.24f), transform.rotation);
         Instantiate(PTurretR, new Vector2(transform.position.x + 0.675f, transform.position.y + 0.24f), transform.rotation);
