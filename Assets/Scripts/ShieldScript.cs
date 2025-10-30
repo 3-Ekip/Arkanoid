@@ -9,6 +9,7 @@ public class ShieldScript : MonoBehaviour
 
     private void Start()
     {
+        SubscribeOnDestroy();
         DontDestroyOnLoad(this.gameObject);
         platform = GameObject.Find("Platform").GetComponent<Platform>();
         SubscribeToSync();
@@ -36,5 +37,13 @@ public class ShieldScript : MonoBehaviour
     void SubscribeToSync()
     {
        platform.SyncTheShield += ShieldDrag;
+    }
+    private void Destroy()
+    {
+        Destroy(gameObject);
+    }
+    void SubscribeOnDestroy()
+    {
+        GameManager.Destruction += Destroy;
     }
 }

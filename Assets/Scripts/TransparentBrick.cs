@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TransparentBrick : Brick
 {
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ball")
@@ -12,4 +13,6 @@ public class TransparentBrick : Brick
             BrickHit();
         }
     }
+    
+
 }

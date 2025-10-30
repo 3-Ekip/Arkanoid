@@ -17,7 +17,12 @@ public class CapsuleScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Capsule collided with " + collision.gameObject.name);
-        if (collision.gameObject.CompareTag("platform")|| collision.gameObject.CompareTag("floor") || collision.gameObject.CompareTag("WALL") || this.gameObject.CompareTag("ball") && collision.gameObject.CompareTag("Brick") || this.gameObject.CompareTag("damage")&collision.gameObject.CompareTag("shield") || transform.position.y < -7)
+        if (collision.gameObject.CompareTag("platform")||
+            collision.gameObject.CompareTag("floor") || 
+            collision.gameObject.CompareTag("WALL") || 
+            this.gameObject.CompareTag("ball") && collision.gameObject.CompareTag("Brick") ||
+            this.gameObject.CompareTag("damage")&collision.gameObject.CompareTag("shield") ||
+            transform.position.y < -7)
         {
             Destroy(gameObject);
         }

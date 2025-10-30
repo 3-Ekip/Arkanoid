@@ -20,10 +20,12 @@ public class Platform : MonoBehaviour
     public int TheShieldIsActive = 0;
     ShieldScript shieldscript;
     public event Action SyncTheShield;
+    
     public event Action SyncThePTurret;    
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        SubscribeOnDestroy();
     }
     void Update()
     {
@@ -72,19 +74,23 @@ public class Platform : MonoBehaviour
         }
         if (collision.gameObject.tag == "PowerUp")
         {
-            float randomPwrUpGen= UnityEngine.Random.Range(1, 4);
-            if (randomPwrUpGen <0)
+            float randomPwrUpGen= UnityEngine.Random.Range(1, 100);
+            if (randomPwrUpGen <25)
             {
             InstantiateBeam();                
             }
-            else if (randomPwrUpGen <5)
+            else if (randomPwrUpGen <50)
             {
                 InstantiatePTurret();
             }
-            else
+            else if (randomPwrUpGen <=75)
             {
-                logic.HealthPoints++;
+                logic.HealthPoints+=3;
                 logic.UpdateHealth();
+            }
+            else if (randomPwrUpGen <=100)
+            {
+                ball.ProtectedBallFunction();
             }
         }
     }
@@ -111,11 +117,26 @@ public class Platform : MonoBehaviour
     }
     public void HealthDecrease()
     {
+        if (ball.isProtected)
+        {
+            ball.isProtected = false;
+            ball.SetBackToDefault();
+            return;
+        }
         logic.HealthPoints--;
         if (logic.HealthPoints <= 0)
         {          
             logic.RestartGame();
         }
         logic.UpdateHealth();
+    }
+    private void Destroy()
+    {
+        Destroy(gameObject);
+        GameManager.Destruction -= Destroy;
+    }
+    void SubscribeOnDestroy()
+    {
+        GameManager.Destruction += Destroy;
     }
 }

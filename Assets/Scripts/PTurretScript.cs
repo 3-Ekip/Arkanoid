@@ -18,6 +18,7 @@ public class PTurretScript : MonoBehaviour
         SubscribeToPlatform();
         PTurretActive++;
         StartCoroutine(PTurretShoot());
+        SubscribeOnDestroy();
     }
     public void PTurretDrag()
     {
@@ -41,5 +42,15 @@ public class PTurretScript : MonoBehaviour
         platform.SyncThePTurret -= PTurretDrag;
         PTurretActive--;
         Destroy(this.gameObject);
+        GameManager.Destruction -= Destroy;
+    }
+    private void Destroy()
+    {
+        Destroy(gameObject);
+        GameManager.Destruction -= Destroy;
+    }
+    void SubscribeOnDestroy()
+    {
+        GameManager.Destruction += Destroy;
     }
 }

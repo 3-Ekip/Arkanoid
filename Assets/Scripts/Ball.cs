@@ -10,14 +10,20 @@ public class Ball : MonoBehaviour
     public float StartForce;
     public GameObject ball;
     public GameManager logic;
-    public Platform Pscript; 
+    public Platform Pscript;
+    public Sprite ProtectedBall;
+    public Color Default;
+    public Color ProtectedBallColor;
+    public bool isProtected = false;
     public bool StartTimePeriod; //TheBoolThatChecksIfTheBallShouldBeLockedRightAboveThePlatformOrNot
     // Start is called before the first frame update
     void Start()
     {
+        Default = GetComponent<SpriteRenderer>().color;
         DontDestroyOnLoad(this.gameObject);
         StartTimePeriod = true;
         SceneStart();
+        SubscribeOnDestroy();
     }
     public void BallStartDrag()
     {
@@ -74,7 +80,24 @@ public class Ball : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ShootUp();
     }
-    
-   
-    
+    private void Destroy()
+    {
+        Destroy(gameObject);
+        GameManager.Destruction -= Destroy;
+    }
+    void SubscribeOnDestroy()
+    {
+        GameManager.Destruction += Destroy;
+    }
+    public void ProtectedBallFunction()
+    {
+        isProtected = true;
+        //gameObject.GetComponent<SpriteRenderer>().sprite = ProtectedBall;
+        gameObject.GetComponent<SpriteRenderer>().color = ProtectedBallColor;
+    }
+    public void SetBackToDefault()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Default;
+    }
+
 }

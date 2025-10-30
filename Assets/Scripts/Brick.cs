@@ -106,7 +106,7 @@ public class Brick : MonoBehaviour
         int dropRNG = Random.Range(0, Max);
         if (dropRNG < 10)
         {
-            Instantiate(PowerUp, transform.position, transform.rotation);
+            InstantiatePowerUp();
             Max = 100;
         }
         else
@@ -116,7 +116,11 @@ public class Brick : MonoBehaviour
         Debug.Log(Max);
         Destroy(gameObject);
     }
-    
+    public void InstantiatePowerUp()
+    {
+        Instantiate(PowerUp, transform.position, transform.rotation);
+    }
+
     public IEnumerator VoidThatExplodes()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -156,5 +160,5 @@ public class Brick : MonoBehaviour
     {
         Destroy(barricade);
         brickHealth = 1; 
-    }
+    }   
 }

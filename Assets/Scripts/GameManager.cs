@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int currentLevelNo;
     public int LastScene;
     public event Action RemoveBarricades;
+    public static event Action Destruction;
     GameObject Platform;
     GameObject Ball;
     public GameObject Canvas;
@@ -66,15 +67,15 @@ public class GameManager : MonoBehaviour
         currentLevelNo++;
         if (currentLevelNo == GameOverSceneNum ||currentLevelNo==LastScene)
         {
-            DestroyObjects();
+            RestartGame();
         }
         Debug.Log("Level Loaded");
     }
     public void DestroyObjects()
     {
-        Destroy(Ball);
-        Destroy(Platform);
         Destroy(Canvas);
+        Destruction?.Invoke();
+        Debug.Log("Destroyed Objects");
     }
     public void CheckBarricade() 
     {
