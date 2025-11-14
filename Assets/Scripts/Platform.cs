@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class Platform : MonoBehaviour
@@ -75,23 +76,43 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.tag == "PowerUp")
         {
             float randomPwrUpGen= UnityEngine.Random.Range(1, 100);
-            if (randomPwrUpGen <25)
+            if (randomPwrUpGen <0)
             {
             InstantiateBeam();                
             }
-            else if (randomPwrUpGen <50)
+            else if (randomPwrUpGen <0)
             {
                 InstantiatePTurret();
             }
-            else if (randomPwrUpGen <=75)
+            else if (randomPwrUpGen <=0)
             {
                 logic.HealthPoints+=3;
                 logic.UpdateHealth();
             }
-            else if (randomPwrUpGen <=100)
+            else if (randomPwrUpGen <=0)
             {
                 ball.ProtectedBallFunction();
             }
+            else
+            {
+                StartCoroutine(ThreeBrickDestroyerPowerUp());
+            }
+        }
+    }
+    IEnumerator ThreeBrickDestroyerPowerUp()
+    {
+        GameObject bricks = GameObject.Find("Bricks");
+        int ChildCount;
+        int repeat = 0;
+        while (repeat < 3)
+        {
+            ChildCount = bricks.transform.childCount;
+            int RandomBrickIndex = UnityEngine.Random.Range(0, ChildCount);
+            if (ChildCount == 0) { repeat++; yield break; }
+            Transform randomChild = bricks.transform.GetChild(RandomBrickIndex);
+            randomChild.GetComponent<Brick>().BrickDie();
+            repeat++;
+            yield return new WaitForSeconds(0.1f);
         }
     }
     public void InstantiatePTurret()
