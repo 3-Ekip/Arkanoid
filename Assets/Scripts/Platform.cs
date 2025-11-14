@@ -76,22 +76,22 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.tag == "PowerUp")
         {
             float randomPwrUpGen= UnityEngine.Random.Range(1, 100);
-            if (randomPwrUpGen <0)
+            if (randomPwrUpGen <=20)
             {
             InstantiateBeam();                
             }
-            else if (randomPwrUpGen <0)
+            else if (randomPwrUpGen <=40)
             {
                 InstantiatePTurret();
             }
-            else if (randomPwrUpGen <=0)
-            {
-                logic.HealthPoints+=3;
-                logic.UpdateHealth();
-            }
-            else if (randomPwrUpGen <=0)
+            else if (randomPwrUpGen <=80)
             {
                 ball.ProtectedBallFunction();
+                if(ball.isProtected==true)
+                {
+                    logic.HealthPoints += 3;
+                    logic.UpdateHealth();
+                }
             }
             else
             {

@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a090c37ba427846932e1cf497debc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Max: 100
   Explosion: {fileID: 0}
   brickHealth: 1
   logic: {fileID: 0}
