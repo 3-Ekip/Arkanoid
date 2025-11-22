@@ -86,12 +86,13 @@ public class Platform : MonoBehaviour
             }
             else if (randomPwrUpGen <=80)
             {
-                ball.ProtectedBallFunction();
-                if(ball.isProtected==true)
+                if (ball.isProtected == true)
                 {
                     logic.HealthPoints += 3;
                     logic.UpdateHealth();
+                    return;
                 }
+                ball.ProtectedBallFunction();             
             }
             else
             {

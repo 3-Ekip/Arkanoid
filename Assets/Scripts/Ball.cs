@@ -29,12 +29,12 @@ public class Ball : MonoBehaviour
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float clampedX = Mathf.Clamp(mousePos, Platform.negativemaxX, Platform.maxX);
-        transform.position = new Vector2(clampedX, -4.76f);
+        transform.position = new Vector2(clampedX, -4.65f);
     }
     public void SceneStart()
     {
         rb.velocity = new Vector2(0, 0);
-        transform.position = new Vector2(Pscript.transform.position.x, Pscript.transform.position.y+0.24f);
+        transform.position = new Vector2(Pscript.transform.position.x, Pscript.transform.position.y+0.35f);
         StartCoroutine(StartingPosition());
     }
     IEnumerator StartingPosition()
@@ -74,7 +74,7 @@ public class Ball : MonoBehaviour
         StartTimePeriod = true;
         rb.velocity = new Vector2(0, 0);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        transform.position = new Vector2(Pscript.transform.position.x, Pscript.transform.position.y+(float)0.24);
+        transform.position = new Vector2(Pscript.transform.position.x, Pscript.transform.position.y+(float)0.27);
         yield return new WaitForSeconds(1f);        
         gameObject.GetComponent<SpriteRenderer>().enabled = true;        
         yield return new WaitForSeconds(1f);

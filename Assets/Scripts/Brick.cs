@@ -78,7 +78,7 @@ public class Brick : MonoBehaviour
         }
         if (brickType == 4) //patlayýcý tuðla ise
         {
-            StartCoroutine(VoidThatExplodes());
+            VoidThatExplodes();
         }
         else
         {
@@ -121,10 +121,9 @@ public class Brick : MonoBehaviour
         Instantiate(PowerUp, transform.position, transform.rotation);
     }
 
-    public IEnumerator VoidThatExplodes()
+    public void VoidThatExplodes()
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.6f);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;    
         Vector2 center = transform.position;
         Vector2 boxSize = new Vector2(1.5f, 1.25f);
         Collider2D[] hits = Physics2D.OverlapBoxAll(center, boxSize, 0f, targetLayers);
@@ -137,6 +136,8 @@ public class Brick : MonoBehaviour
                }
                BlownUpBrick?.BrickHit();          
         }
+        GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+        Destroy(explosion, 0.8f);
         BrickDeathCheck();
     }
 
