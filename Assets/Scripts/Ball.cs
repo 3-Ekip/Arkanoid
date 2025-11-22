@@ -64,6 +64,13 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.tag == "floor")
         {
             Debug.Log("Collided with floor");
+            if (isProtected)
+            {
+                isProtected = false;
+                SetBackToDefault();
+                StartCoroutine(Respawn());
+                return;
+            }
             Pscript.HealthDecrease();
             StartCoroutine(Respawn());     
         }

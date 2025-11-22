@@ -8,8 +8,8 @@ public class Platform : MonoBehaviour
 {
     public Ball ball;
     public float speed = 5f;
-    public static float maxX = 2.24f ;
-    public static float negativemaxX = -2.24f;
+    public static float maxX = 2f;
+    public static float negativemaxX = -2f;
     public GameManager logic;
     public GameObject Beam;
     public GameObject ShieldThatIsInstantiated;
@@ -76,19 +76,19 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.tag == "PowerUp")
         {
             float randomPwrUpGen= UnityEngine.Random.Range(1, 100);
-            if (randomPwrUpGen <=20)
+            if (randomPwrUpGen <=30)
             {
             InstantiateBeam();                
             }
-            else if (randomPwrUpGen <=40)
+            else if (randomPwrUpGen <=60)
             {
                 InstantiatePTurret();
             }
-            else if (randomPwrUpGen <=80)
+            else if (randomPwrUpGen <=70)
             {
                 if (ball.isProtected == true)
                 {
-                    logic.HealthPoints += 3;
+                    logic.HealthPoints += 1;
                     logic.UpdateHealth();
                     return;
                 }
@@ -118,8 +118,8 @@ public class Platform : MonoBehaviour
     }
     public void InstantiatePTurret()
     {
-        Instantiate(PTurretL, new Vector2(transform.position.x - 0.675f, transform.position.y + 0.24f), transform.rotation);
-        Instantiate(PTurretR, new Vector2(transform.position.x + 0.675f, transform.position.y + 0.24f), transform.rotation);
+        Instantiate(PTurretL, new Vector2(transform.position.x - 0.84f, transform.position.y + 0.24f), transform.rotation);
+        Instantiate(PTurretR, new Vector2(transform.position.x + 0.84f, transform.position.y + 0.24f), transform.rotation);
     }   
     public void InstantiateShield()
     {
@@ -138,13 +138,7 @@ public class Platform : MonoBehaviour
         Destroy(xyz);
     }
     public void HealthDecrease()
-    {
-        if (ball.isProtected)
-        {
-            ball.isProtected = false;
-            ball.SetBackToDefault();
-            return;
-        }
+    {       
         logic.HealthPoints--;
         if (logic.HealthPoints <= 0)
         {          

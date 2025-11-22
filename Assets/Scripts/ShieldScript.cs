@@ -24,6 +24,7 @@ public class ShieldScript : MonoBehaviour
         if (collision.gameObject.tag == "damage")
         {           
             platform.SyncTheShield -= ShieldDrag;
+            GameManager.Destruction -= Destroy;
             platform.TheShieldIsActive--;
             Destroy(this.gameObject);
         }

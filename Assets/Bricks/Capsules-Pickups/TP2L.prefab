@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1807299679577980448}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.675, y: -4.76, z: 0}
+  m_LocalPosition: {x: 0.84, y: -4.76, z: 0}
   m_LocalScale: {x: 0.14999999, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,4 +100,4 @@ MonoBehaviour:
   TotalBullets: 5
   Capsule: {fileID: 7649741347855846844, guid: 2db5cd25f7b84de49b2c36e19ae8b17b, type: 3}
   platform: {fileID: 0}
-  RorL: -0.675
+  RorL: -0.84
