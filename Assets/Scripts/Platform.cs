@@ -11,18 +11,19 @@ public class Platform : MonoBehaviour
     public static float maxX = 2f;
     public static float negativemaxX = -2f;
     public GameManager logic;
-    public GameObject Beam;
+    public GameObject BeamBase;
     public GameObject ShieldThatIsInstantiated;
     public GameObject shield;
     public GameObject PTurretR;
     public GameObject PTurretL;
-
+    public GameObject BeamInScene;
     public bool BeamIsActive = false;
     public int TheShieldIsActive = 0;
     ShieldScript shieldscript;
     public event Action SyncTheShield;
-    
-    public event Action SyncThePTurret;    
+    public bool IsBeamOn;
+    public event Action SyncThePTurret;
+    public int randomPwrUpGen;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -39,7 +40,6 @@ public class Platform : MonoBehaviour
                 shieldscript = shield.GetComponent<ShieldScript>();
                 (SyncTheShield)?.Invoke();
                 shieldscript.ShieldDrag();
-                Debug.Log("Shield Dragged");
             }
             if (ball.StartTimePeriod)
             {
@@ -48,6 +48,11 @@ public class Platform : MonoBehaviour
             if(PTurretScript.PTurretActive>0)
             {
                 (SyncThePTurret)?.Invoke();
+            }
+            if (IsBeamOn)
+            {
+                BeamInScene.transform.position = this.transform.position;
+                Debug.Log("BeamDragged");
             }
         }
     }
@@ -75,29 +80,49 @@ public class Platform : MonoBehaviour
         }
         if (collision.gameObject.tag == "PowerUp")
         {
-            float randomPwrUpGen= UnityEngine.Random.Range(1, 100);
+            randomPwrUpGen= UnityEngine.Random.Range(1, 100);
             if (randomPwrUpGen <=30)
             {
-            InstantiateBeam();                
-            }
-            else if (randomPwrUpGen <=60)
-            {
-                InstantiatePTurret();
-            }
-            else if (randomPwrUpGen <=70)
-            {
-                if (ball.isProtected == true)
-                {
-                    logic.HealthPoints += 1;
-                    logic.UpdateHealth();
-                    return;
-                }
-                ball.ProtectedBallFunction();             
+                PowerUpBeamPart();
             }
             else
             {
-                StartCoroutine(ThreeBrickDestroyerPowerUp());
+                PowerUpNonBeamPart();
             }
+            
+        }
+    }
+    public void PowerUpBeamPart()
+    {     
+            if (IsBeamOn == false)
+            {
+                InstantiateBeam();
+            }
+            else
+            {
+                randomPwrUpGen = UnityEngine.Random.Range(31, 100);
+                PowerUpNonBeamPart();
+            }     
+    }
+    public void PowerUpNonBeamPart()
+    {
+        if (randomPwrUpGen <= 60)
+        {
+            InstantiatePTurret();
+        }
+        else if (randomPwrUpGen <= 70)
+        {
+            if (ball.isProtected == true)
+            {
+                logic.HealthPoints += 1;
+                logic.UpdateHealth();
+                return;
+            }
+            ball.ProtectedBallFunction();
+        }
+        else
+        {
+            StartCoroutine(ThreeBrickDestroyerPowerUp());
         }
     }
     IEnumerator ThreeBrickDestroyerPowerUp()
@@ -105,7 +130,7 @@ public class Platform : MonoBehaviour
         GameObject bricks = GameObject.Find("Bricks");
         int ChildCount;
         int repeat = 0;
-        while (repeat < 3)
+        while (repeat < 5)
         {
             ChildCount = bricks.transform.childCount;
             int RandomBrickIndex = UnityEngine.Random.Range(0, ChildCount);
@@ -113,13 +138,13 @@ public class Platform : MonoBehaviour
             Transform randomChild = bricks.transform.GetChild(RandomBrickIndex);
             randomChild.GetComponent<Brick>().BrickDie();
             repeat++;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.15f);
         }
     }
     public void InstantiatePTurret()
     {
-        Instantiate(PTurretL, new Vector2(transform.position.x - 0.84f, transform.position.y + 0.24f), transform.rotation);
-        Instantiate(PTurretR, new Vector2(transform.position.x + 0.84f, transform.position.y + 0.24f), transform.rotation);
+        Instantiate(PTurretL, new Vector2(transform.position.x - 0.84f, transform.position.y + 0.3f), transform.rotation);
+        Instantiate(PTurretR, new Vector2(transform.position.x + 0.84f, transform.position.y + 0.3f), transform.rotation);
     }   
     public void InstantiateShield()
     {
@@ -133,9 +158,16 @@ public class Platform : MonoBehaviour
     public IEnumerator InstantiateBeamCR()
     {
         Vector2 beampos = new Vector2(transform.position.x, 0);
-        GameObject xyz = Instantiate(Beam, beampos, transform.rotation);
-        yield return new WaitForSeconds(0.7f);
-        Destroy(xyz);
+        BeamInScene = Instantiate(BeamBase, transform.position, transform.rotation);
+        IsBeamOn = true;
+        yield return new WaitForSeconds(1f);
+        IsBeamOn = false;
+        Transform BeamT = BeamInScene.transform.Find("Beam");
+        Transform SemiCircle = BeamInScene.transform.Find("SemiCircle");
+        SemiCircle.gameObject.SetActive(false);
+        BeamT.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        Destroy(BeamInScene);
     }
     public void HealthDecrease()
     {       
