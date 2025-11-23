@@ -122,10 +122,10 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ThreeBrickDestroyerPowerUp());
+            StartCoroutine(FiveBrickDestroyerPowerUp());
         }
     }
-    IEnumerator ThreeBrickDestroyerPowerUp()
+    IEnumerator FiveBrickDestroyerPowerUp()
     {
         GameObject bricks = GameObject.Find("Bricks");
         int ChildCount;

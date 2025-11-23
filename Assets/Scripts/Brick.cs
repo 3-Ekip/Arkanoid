@@ -4,20 +4,21 @@ using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Brick : MonoBehaviour
+ public class Brick : MonoBehaviour
 {
     public static int Max = 100;
     public GameObject Explosion;
     public int brickHealth;
     public GameManager logic;
-    public int brickType; // 1=barikat, 2=kapsul, 3=taret, 0=normal
+    public int brickType; 
     public GameObject Capsule;
     public GameObject TurretPart;
     public GameObject barricade;
     public Ball ball;
     public LayerMask targetLayers; 
     public GameObject PowerUp;
-    // Start is called before the first frame update
+    bool BrickIsDead = false;
+    // Start is called before the first frame updpublicate
     void Start()
     {
         logic = GameObject.Find("LogicManager").GetComponent<GameManager>();
@@ -34,7 +35,7 @@ public class Brick : MonoBehaviour
         }
         SubscribeToLogic();
     }
-    IEnumerator TurretShoot() //brick tipi 3 ise
+    IEnumerator TurretShoot() 
     {
         while (true)
         {
@@ -72,11 +73,16 @@ public class Brick : MonoBehaviour
     }
     public void BrickDie()
     {
-        if (brickType == 1) //barikat kitliyse
+        if (BrickIsDead)
         {
-            logic.BrickKey--; //toplam
+            return;
         }
-        if (brickType == 4) //patlayýcý tuðla ise
+        BrickIsDead = true;
+        if (brickType == 1) 
+        {
+            logic.BrickKey--; 
+        }
+        if (brickType == 4) 
         {
             VoidThatExplodes();
         }
@@ -101,6 +107,7 @@ public class Brick : MonoBehaviour
             }
             
             Destroy(gameObject);
+            return;
         }
         
         int dropRNG = Random.Range(0, Max);
