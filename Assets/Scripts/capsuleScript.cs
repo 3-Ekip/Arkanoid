@@ -14,14 +14,20 @@ public class CapsuleScript : MonoBehaviour
         transform.position = new Vector2(transform.position.x, transform.position.y- Ycapsuleheightdiff);
         rb.AddRelativeForce(new Vector2(0, -capSpeed), ForceMode2D.Impulse);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (this.gameObject.CompareTag("damage") && collision.gameObject.CompareTag("shield"))
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Capsule collided with " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("platform")||
             collision.gameObject.CompareTag("floor") || 
             collision.gameObject.CompareTag("WALL") || 
-            this.gameObject.CompareTag("ball") && collision.gameObject.CompareTag("Brick") ||
-            this.gameObject.CompareTag("damage")&collision.gameObject.CompareTag("shield") ||
+            this.gameObject.CompareTag("ball") && collision.gameObject.CompareTag("Brick") ||            
             transform.position.y < -7)
         {
             Destroy(gameObject);

@@ -84,7 +84,7 @@ using UnityEngine;
         }
         if (brickType == 4) 
         {
-            VoidThatExplodes();
+            StartCoroutine(VoidThatExplodes());
         }
         else
         {
@@ -111,10 +111,10 @@ using UnityEngine;
         }
         
         int dropRNG = Random.Range(0, Max);
-        if (dropRNG < 10)
+        if (dropRNG < 6)
         {
-            InstantiatePowerUp();
             Max = 100;
+            InstantiatePowerUp();
         }
         else
         {
@@ -128,9 +128,10 @@ using UnityEngine;
         Instantiate(PowerUp, transform.position, transform.rotation);
     }
 
-    public void VoidThatExplodes()
+    public IEnumerator VoidThatExplodes()
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;    
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.05f);
         Vector2 center = transform.position;
         Vector2 boxSize = new Vector2(1.5f, 1.25f);
         Collider2D[] hits = Physics2D.OverlapBoxAll(center, boxSize, 0f, targetLayers);

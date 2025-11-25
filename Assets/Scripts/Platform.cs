@@ -8,8 +8,8 @@ public class Platform : MonoBehaviour
 {
     public Ball ball;
     public float speed = 5f;
-    public static float maxX = 2f;
-    public static float negativemaxX = -2f;
+    public static float maxX = 2.2f;
+    public static float negativemaxX = -2.2f;
     public GameManager logic;
     public GameObject BeamBase;
     public GameObject ShieldThatIsInstantiated;

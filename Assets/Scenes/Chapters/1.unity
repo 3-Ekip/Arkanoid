@@ -218,7 +218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -284.93, y: -751.79}
+  m_AnchoredPosition: {x: -284.93, y: -766.99}
   m_SizeDelta: {x: 330.1385, y: 96.4157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222104064
@@ -537,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &333711960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -841,6 +841,7 @@ MonoBehaviour:
   HealthPoints: 10
   currentLevelNo: 2
   LastScene: 11
+  BallSpeedAcc: 0.2
   Canvas: {fileID: 1581943146}
   ball: {fileID: 674675295}
   HealthText: {fileID: 222104064}
@@ -1093,9 +1094,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.017348725}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.48265117
 --- !u!50 &674675292
 Rigidbody2D:
   serializedVersion: 4
@@ -1165,7 +1166,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.05833925, g: 0.29411766, b: 0.6509434, a: 1}
+  m_Color: {r: 0.1137255, g: 1, b: 0.7372549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1184,7 +1185,7 @@ Transform:
   m_GameObject: {fileID: 674675290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.7, z: 0}
+  m_LocalPosition: {x: 0, y: -4.75, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1203,13 +1204,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 674675292}
-  StartForce: 7
+  StartForce: 7.5
   ball: {fileID: 674675290}
   logic: {fileID: 528226697}
   Pscript: {fileID: 1494884410}
   ProtectedBall: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  Default: {r: 0.050980397, g: 0.29411766, b: 0.6509804, a: 0}
-  ProtectedBallColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  Default: {r: 0.10980393, g: 1, b: 0.7372549, a: 0}
+  ProtectedBallColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
   isProtected: 0
   StartTimePeriod: 0
 --- !u!1 &985549146
@@ -1894,7 +1895,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2432,7 +2433,7 @@ Transform:
   m_GameObject: {fileID: 1860727570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -6.3431, z: 0}
+  m_LocalPosition: {x: 0, y: -6.3, z: 0}
   m_LocalScale: {x: 1.1906613, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

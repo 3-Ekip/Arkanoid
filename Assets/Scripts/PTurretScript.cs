@@ -11,6 +11,7 @@ public class PTurretScript : MonoBehaviour
     public static int PTurretActive=0;
     public Platform platform;
     public float RorL; // Right or Left
+    public bool IsTurretOn= false;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -35,7 +36,7 @@ public class PTurretScript : MonoBehaviour
     {
         while (TotalBullets>0)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.7f);
             Instantiate(Capsule, transform.position, transform.rotation);
             TotalBullets--;
         }

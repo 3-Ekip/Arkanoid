@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int LastScene;
     public event Action RemoveBarricades;
     public static event Action Destruction;
+    public float BallSpeedAcc;
     GameObject Platform;
     GameObject Ball;
     public GameObject Canvas;
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Next Level");
         yield return new WaitForSeconds(2f);
-        ball.StartForce += (float)0.8;
+        ball.StartForce += BallSpeedAcc;
         ball.SceneStart();
         ball.StartTimePeriod = true;
         BrickKey = 0;

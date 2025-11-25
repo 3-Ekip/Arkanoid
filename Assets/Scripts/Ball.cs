@@ -29,12 +29,12 @@ public class Ball : MonoBehaviour
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float clampedX = Mathf.Clamp(mousePos, Platform.negativemaxX, Platform.maxX);
-        transform.position = new Vector2(clampedX, -4.7f);
+        transform.position = new Vector2(clampedX, -4.756f);
     }
     public void SceneStart()
     {
         rb.velocity = new Vector2(0, 0);
-        transform.position = new Vector2(Pscript.transform.position.x, Pscript.transform.position.y+0.35f);
+        transform.position = new Vector2(Pscript.transform.position.x, Pscript.transform.position.y+0.244f);
         StartCoroutine(StartingPosition());
     }
     IEnumerator StartingPosition()
@@ -57,7 +57,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.tag == "platform")
         {
             rb.velocity = new Vector2(0, 0);
-            Vector2 normal = transform.position - new Vector3(Pscript.transform.position.x, Pscript.transform.position.y - (float)1.25, 0);
+            Vector2 normal = transform.position - new Vector3(Pscript.transform.position.x, Pscript.transform.position.y - (float)0.75, 0);
             
             rb.AddForce(normal.normalized * StartForce, ForceMode2D.Impulse);
         }
