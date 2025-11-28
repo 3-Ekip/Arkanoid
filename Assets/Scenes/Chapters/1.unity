@@ -218,7 +218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -237.9, y: -925}
+  m_AnchoredPosition: {x: -147.9, y: -767}
   m_SizeDelta: {x: 604.2092, y: 96.4157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222104064
@@ -539,7 +539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &333711960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -840,7 +840,7 @@ MonoBehaviour:
   bricksLeft: 0
   GameOverSceneNum: 1
   BrickKey: 0
-  HealthPoints: 3
+  HealthPoints: 10
   currentLevelNo: 2
   LastScene: 11
   BallSpeedAcc: 0.2
