@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public float BallSpeedAcc;
     GameObject Platform;
     GameObject Ball;
+    public Platform platform;
     public GameObject Canvas;
     public Ball ball;
     public Text HealthText;
@@ -62,13 +63,19 @@ public class GameManager : MonoBehaviour
         ball.StartForce += BallSpeedAcc;
         ball.SceneStart();
         ball.StartTimePeriod = true;
+        platform.OnlyOneBeamAtATime = false;
+        platform.IsBeamOn = false;
         BrickKey = 0;
         bricksLeft = 0;
         SceneManager.LoadScene(currentLevelNo);   
         currentLevelNo++;
-        if (currentLevelNo == GameOverSceneNum ||currentLevelNo==LastScene)
+        if (currentLevelNo == GameOverSceneNum)
         {
             RestartGame();
+        }
+        if (currentLevelNo == LastScene)
+        {
+            DestroyObjects();
         }
         Debug.Log("Level Loaded");
     }

@@ -100,4 +100,5 @@ MonoBehaviour:
   TotalBullets: 9
   Capsule: {fileID: 7649741347855846844, guid: 2db5cd25f7b84de49b2c36e19ae8b17b, type: 3}
   platform: {fileID: 0}
-  RorL: 0.84
+  RorL: 0.66
+  IsTurretOn: 0

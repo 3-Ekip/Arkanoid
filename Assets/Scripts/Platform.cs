@@ -24,6 +24,7 @@ public class Platform : MonoBehaviour
     public bool IsBeamOn;
     public event Action SyncThePTurret;
     public int randomPwrUpGen;
+    public bool OnlyOneBeamAtATime= false;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -94,7 +95,7 @@ public class Platform : MonoBehaviour
     }
     public void PowerUpBeamPart()
     {     
-            if (IsBeamOn == false)
+            if (OnlyOneBeamAtATime == false)
             {
                 InstantiateBeam();
             }
@@ -143,8 +144,9 @@ public class Platform : MonoBehaviour
     }
     public void InstantiatePTurret()
     {
-        Instantiate(PTurretL, new Vector2(transform.position.x - 0.84f, transform.position.y + 0.3f), transform.rotation);
-        Instantiate(PTurretR, new Vector2(transform.position.x + 0.84f, transform.position.y + 0.3f), transform.rotation);
+
+        Instantiate(PTurretL, new Vector2(transform.position.x + PTurretL.GetComponent<PTurretScript>().RorL, transform.position.y + 0.3f), transform.rotation);
+        Instantiate(PTurretR, new Vector2(transform.position.x + PTurretR.GetComponent<PTurretScript>().RorL, transform.position.y + 0.3f), transform.rotation);
     }   
     public void InstantiateShield()
     {
@@ -157,16 +159,18 @@ public class Platform : MonoBehaviour
     }
     public IEnumerator InstantiateBeamCR()
     {
+        OnlyOneBeamAtATime = true;
         Vector2 beampos = new Vector2(transform.position.x, 0);
         BeamInScene = Instantiate(BeamBase, transform.position, transform.rotation);
         IsBeamOn = true;
         yield return new WaitForSeconds(1f);
-        IsBeamOn = false;
         Transform BeamT = BeamInScene.transform.Find("Beam");
         Transform SemiCircle = BeamInScene.transform.Find("SemiCircle");
         SemiCircle.gameObject.SetActive(false);
         BeamT.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
+        IsBeamOn = false;
+        yield return new WaitForSeconds(1f);
+        OnlyOneBeamAtATime = false;
         Destroy(BeamInScene);
     }
     public void HealthDecrease()

@@ -840,10 +840,11 @@ MonoBehaviour:
   bricksLeft: 0
   GameOverSceneNum: 1
   BrickKey: 0
-  HealthPoints: 10
+  HealthPoints: 3
   currentLevelNo: 2
   LastScene: 11
   BallSpeedAcc: 0.2
+  platform: {fileID: 1494884410}
   Canvas: {fileID: 1581943146}
   ball: {fileID: 674675295}
   HealthText: {fileID: 222104064}
@@ -1167,8 +1168,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.1137255, g: 1, b: 0.7372549, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 79cc428f8ca7dfd4f97cdc9d05bfa842, type: 3}
+  m_Color: {r: 0.10980393, g: 1, b: 0.7372549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1212,7 +1213,7 @@ MonoBehaviour:
   Pscript: {fileID: 1494884410}
   ProtectedBall: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   Default: {r: 0.10980393, g: 1, b: 0.7372549, a: 0}
-  ProtectedBallColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  ProtectedBallColor: {r: 0.39607847, g: 0.39607847, b: 0.39607847, a: 1}
   isProtected: 0
   StartTimePeriod: 0
 --- !u!1 &985549146
@@ -1927,6 +1928,7 @@ MonoBehaviour:
   TheShieldIsActive: 0
   IsBeamOn: 0
   randomPwrUpGen: 0
+  OnlyOneBeamAtATime: 0
 --- !u!60 &1494884411
 PolygonCollider2D:
   m_ObjectHideFlags: 0

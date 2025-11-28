@@ -27,13 +27,13 @@ using UnityEngine;
         if (brickType == 1)
         {
             logic.BrickKey++;
+            SubscribeToLogic();
         }
         if (brickType == 3)
         {
             StartCoroutine(TurretShoot());
             logic.BrickKey++;     
         }
-        SubscribeToLogic();
     }
     IEnumerator TurretShoot() 
     {
@@ -78,7 +78,7 @@ using UnityEngine;
             return;
         }
         BrickIsDead = true;
-        if (brickType == 1) 
+        if (brickType == 1||brickType == 3) 
         {
             logic.BrickKey--; 
         }
@@ -167,6 +167,8 @@ using UnityEngine;
     }
     void RemoveBarricade()
     {
+        GameObject BrickParent = GameObject.Find("Bricks");
+        gameObject.transform.SetParent(BrickParent.transform);
         Destroy(barricade);
         brickHealth = 1; 
     }   
