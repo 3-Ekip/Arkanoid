@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject Canvas;
     public Ball ball;
     public Text HealthText;
+    public GameObject ControlPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,5 +99,16 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(GameOverSceneNum);
         currentLevelNo = GameOverSceneNum;
         DestroyObjects();
+    }
+    public void OpenControlPanel()
+    {
+        ControlPanel.SetActive(true);
+        Time.timeScale = 0.1f;
+        
+    }
+    public void CloseControlPanel()
+    {
+        ControlPanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

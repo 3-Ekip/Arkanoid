@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 
 public class Platform : MonoBehaviour
@@ -34,6 +35,7 @@ public class Platform : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject()||Time.timeScale ==0) { return; }
             platformDrag();
             if (TheShieldIsActive >0)
             {

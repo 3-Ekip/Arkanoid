@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2936857079433454152}
   - component: {fileID: 2312730134946205904}
   - component: {fileID: 4888616901234833058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TP2R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2936857079433454152}
   - component: {fileID: 2312730134946205904}
   - component: {fileID: 4888616901234833058}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TP2L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,3 +101,4 @@ MonoBehaviour:
   Capsule: {fileID: 7649741347855846844, guid: 2db5cd25f7b84de49b2c36e19ae8b17b, type: 3}
   platform: {fileID: 0}
   RorL: -0.66
+  IsTurretOn: 0
