@@ -66,7 +66,7 @@ using UnityEngine;
     {
         brickHealth--;
 
-        if (brickHealth == 0) 
+        if (brickHealth <= 0) 
         {
             BrickDie();
         }
@@ -167,9 +167,22 @@ using UnityEngine;
     }
     void RemoveBarricade()
     {
-        GameObject BrickParent = GameObject.Find("Bricks");
-        gameObject.transform.SetParent(BrickParent.transform);
-        Destroy(barricade);
-        brickHealth = 1; 
-    }   
+        if (this == null) return;
+
+        logic.RemoveBarricades -= RemoveBarricade;
+
+        GameObject brickParent = GameObject.Find("Bricks");
+
+        if (brickParent != null && gameObject != null)
+        {
+            transform.SetParent(brickParent.transform);
+        }
+
+        if (barricade != null)
+        {
+            Destroy(barricade);
+        }
+
+        brickHealth = 1;
+    }
 }

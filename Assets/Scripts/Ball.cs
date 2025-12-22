@@ -15,6 +15,8 @@ public class Ball : MonoBehaviour
     public Color Default;
     public Color ProtectedBallColor;
     public bool isProtected = false;
+    public GameObject RespawnButton;
+    public bool BallIsActive=false; //Ball is colliding with bricks and the platform therefore is not stuck
     public bool StartTimePeriod; //TheBoolThatChecksIfTheBallShouldBeLockedRightAboveThePlatformOrNot
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class Ball : MonoBehaviour
         StartTimePeriod = true;
         SceneStart();
         SubscribeOnDestroy();
+        StartCoroutine(SaveTheBallFromBeingStuck());
     }
     public void BallStartDrag()
     {
@@ -56,14 +59,14 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "platform")
         {
+            StartCoroutine(BallHasInteracted());
             rb.velocity = new Vector2(0, 0);
             Vector2 normal = transform.position - new Vector3(Pscript.transform.position.x, Pscript.transform.position.y - (float)0.75, 0);
-            
             rb.AddForce(normal.normalized * StartForce, ForceMode2D.Impulse);
         }
         if (collision.gameObject.tag == "floor")
         {
-            Debug.Log("Collided with floor");
+            StartCoroutine(BallHasInteracted());
             if (isProtected)
             {
                 isProtected = false;
@@ -74,7 +77,24 @@ public class Ball : MonoBehaviour
             Pscript.HealthDecrease();
             StartCoroutine(Respawn());     
         }
+        if (collision.gameObject.tag == "Brick")
+        {
+            Debug.Log("BallHasHitBrick");
+            StartCoroutine(BallHasInteracted());
+        }
     }
+    IEnumerator BallHasInteracted()
+    {
+        if (BallIsActive) { yield break; }
+        Debug.Log("BallHasHitBrickAndTheCRStarted");
+        BallIsActive = true;
+        if (RespawnButton== true) { RespawnButton.SetActive(false); }
+        yield return new WaitForSeconds(1f);
+        BallIsActive = false;
+        Debug.Log("BallHasHitBrickAndTheCREnded");
+    }
+    public void RespawnFunction()
+    { StartCoroutine(Respawn()); }
     public IEnumerator Respawn()
     {
         Debug.Log("Respawn");
@@ -106,5 +126,18 @@ public class Ball : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().color = Default;
     }
-
+    IEnumerator SaveTheBallFromBeingStuck()
+    {
+        while (true)
+        {
+            int redo = 0;
+            while (redo < 9)
+            {
+                yield return new WaitForSeconds(1f);
+                if (BallIsActive) {break;}
+                redo++;
+                if (redo == 8) { RespawnButton.SetActive(true); }
+            }                         
+        }
+    }
 }
