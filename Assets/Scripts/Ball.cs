@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
@@ -12,6 +13,7 @@ public class Ball : MonoBehaviour
     public GameManager logic;
     public Platform Pscript;
     public Sprite ProtectedBall;
+    public GameObject ProtectionOnImage;
     public Color Default;
     public Color ProtectedBallColor;
     public bool isProtected = false;
@@ -32,7 +34,7 @@ public class Ball : MonoBehaviour
     {
         float mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float clampedX = Mathf.Clamp(mousePos, Platform.negativemaxX, Platform.maxX);
-        transform.position = new Vector2(clampedX, -4.756f);
+        transform.position = new Vector2(clampedX, -6.756f);
     }
     public void SceneStart()
     {
@@ -70,6 +72,7 @@ public class Ball : MonoBehaviour
             if (isProtected)
             {
                 isProtected = false;
+                ProtectionOnImage.SetActive(false);
                 SetBackToDefault();
                 StartCoroutine(Respawn());
                 return;
@@ -119,7 +122,7 @@ public class Ball : MonoBehaviour
     public void ProtectedBallFunction()
     {
         isProtected = true;
-        //gameObject.GetComponent<SpriteRenderer>().sprite = ProtectedBall;
+        ProtectionOnImage.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().color = ProtectedBallColor;
     }
     public void SetBackToDefault()

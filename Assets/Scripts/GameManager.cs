@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public List<Image> HeartImages;
     public int bricksLeft;
     public int GameOverSceneNum;
     public int BrickKey;
@@ -24,7 +25,6 @@ public class GameManager : MonoBehaviour
     public Platform platform;
     public GameObject Canvas;
     public Ball ball;
-    public Text HealthText;
     public GameObject ControlPanel;
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
 
 
         UpdateHealth();
-        HealthText.text = "Health: " + HealthPoints.ToString();
         Platform = GameObject.Find("Platform");
         Ball = GameObject.Find("Ball");
         DontDestroyOnLoad(this.gameObject);
@@ -50,7 +49,17 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateHealth()
     {
-        HealthText.text = "Health: " + HealthPoints.ToString();
+        for (int i = 0; i < HeartImages.Count; i++)
+        {
+            if (i < HealthPoints)
+            {
+                HeartImages[i].enabled = true;
+            }
+            else
+            {
+                HeartImages[i].enabled = false;
+            }
+        }   
     }
 
     public void VoidThatCallsNextLevel()
