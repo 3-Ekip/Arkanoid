@@ -128,7 +128,7 @@ public class Platform : MonoBehaviour
         else if (randomPwrUpGen <= 78)
         {
             GameObject blocks = GameObject.Find("Blocks");
-            if (blocks!= null&&DemolishInfo!)
+            if (blocks!= null&&!DemolishInfo&&blocks.transform.childCount > 1)
             {
                 StartCoroutine(DemolishBarricade());
             }
